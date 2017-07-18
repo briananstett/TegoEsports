@@ -1,0 +1,44 @@
+@font-face{
+    font-family: 'Sport Regular';
+    src: url('TrueType/SFSportsNight.ttf') format('truetype');
+}
+
+.main-div {
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 200px;
+    text-align: center;
+}
+
+body {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+/*    background-color:#39393E;*/
+/*    background-image: url('background.png');*/
+    background:  linear-gradient(to top, #fff, transparent), url('background.png');
+    font-size: 3.2em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.title {
+    flex: 2;
+    font-family: 'Sport Regular';
+    color:#CB2027
+}
+
+.caption {
+    flex: 1;
+    color:#CB2027;
+    font-family: 'Work Sans';
+    font-size: 20px;
+    
+}
