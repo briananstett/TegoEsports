@@ -5,7 +5,7 @@
 body{
     margin: 0;
     padding: 0;
-    height:3000px;
+    height:4000px;
     display:flex;
     flex-direction: column;
     font-family: 'Lato', sans-serif;
@@ -93,7 +93,7 @@ header {
     
 }
 
-#slice2 {
+.titleSlice {
     height:50px;
     border-left:5px solid #556271;
     display:flex;
@@ -258,3 +258,42 @@ header {
     
 }
 
+
+#graphSVG {
+    max-height:100%;
+}
+
+#slice5 {
+    height:450px;
+    display:flex;
+    flex-direction: column;
+}
+#slice5 div{
+    flex:1;
+}
+
+
+#statsTitle {
+    height:50px;
+    border-left:5px solid #556271;
+    display:flex;
+    align-items: center;
+        
+}
+
+#statsContent {
+    height:400px;
+    display:flex;
+    flex-direction: row;
+    
+}
+
+#statSVGContainer {
+    max-height: 100%;
+    flex:1;
+}
+
+#statsParagraph {
+    flex:2;
+    text-align: center;
+}
