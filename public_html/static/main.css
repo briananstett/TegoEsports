@@ -32,6 +32,7 @@ header {
     opacity:.9;
     display:flex;
     justify-content: center;
+    z-index: 2000;
 }
 
 #slice1 {
@@ -282,10 +283,10 @@ header {
 }
 
 #statsContent {
-    height:400px;
+    height:350px;
     display:flex;
     flex-direction: row;
-    
+    justify-content: space-between
 }
 
 #statSVGContainer {
@@ -294,6 +295,20 @@ header {
 }
 
 #statsParagraph {
-    flex:2;
-    text-align: center;
+    width:700px;
+}
+
+#statsImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/bars-chart.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    transition-duration: .4s;
+    background-size: 300px ;
+}
+
+#StatImgContainer {
+
 }
