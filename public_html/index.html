@@ -7,40 +7,42 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-        <header>
-            <div id="heaerFlexContainer">
-                <a>Main logo</a>
+        <nav>
+            <div id="headerFlexContainer">
+                <a id="logo-text">TEGO</a>
                 <div id=navButtonContainer>
                     <a class=navButton>Team Members</a>
                     <a class=navButton>Login</a>
                     <a class=navButton>Contact</a>
                 </div>  
             </div>
-        </header>
+        </nav>
         <div class="mainContent">
-            <div id="slice1">
+            <div id="backgroundImageSlice">
+                <!-- Background image assigned through CSS -->
             </div>
             <div  class="informationSlice titleSlice">
-                <h3>Lorem ipsum dolor</h3>  
+                <h3>Our Services</h3>  
             </div>
-            <div id="slice3" class="informationSlice">
-                <div id="discord" class="coreService">
+
+            <div id="servicesSlice" class="informationSlice">
+                <div class="coreService">
                     <a id="discordImage" class="CSImage" href=#></a>
                     <span class="CSContent">Use Discord?</span>
                     <span class="CSContent">So do we!</span>
                 </div>
-                <div id="twitch" class="coreService">
-                    <a id=twitchImage class="CSImage" href=#></a>
+                <div  class="coreService">
+                    <a id="twitchImage" class="CSImage" href=#></a>
                     <span class="CSContent">We stream too!</span>
                 </div>
                 <div class="coreService">
-                    <a id=twitterImage class="CSImage" href=#></a>
+                    <a id="twitterImage" class="CSImage" href=#></a>
                     <span class="CSContent">I think Twitter is dumb</span>   
                 </div>
             </div>
             
 <!--Still working on this-->
-            <div id="slice4">
+            <div id="videoSlice">
                 <div id=videoContainer>
                     <video autoplay loop id="video-background" muted plays-inline>
                         <source src="static/videos/League%20of%20Legends.mp4" type="video/mp4">
@@ -71,7 +73,13 @@
             </div>
             
 <!--Still working on this-->
-            <iframe src="https://discordapp.com/widget?id=178000375440343041&theme=dark" width="350" height="400" allowtransparency="true" frameborder="0"></iframe>
+            <!-- <iframe src="https://discordapp.com/widget?id=178000375440343041&theme=dark" width="350" height="400" allowtransparency="true" frameborder="0"></iframe> -->
+                <!-- Commented out the above for now. -->
         </div>
+            
+            <footer>
+                <hr id="footerLine">
+                Created 2017, TeGo Enterprises
+            </footer>
     </body>
 </html>

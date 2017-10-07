@@ -5,24 +5,28 @@
 body{
     margin: 0;
     padding: 0;
-    height:4000px;
+    background-color: #040C1A;
     display:flex;
     flex-direction: column;
     font-family: 'Lato', sans-serif;
     
 }
-#heaerFlexContainer {
+
+@font-face{
+    font-family: esp;
+    src:url("fonts/esp.ttf")
+}
+
+#headerFlexContainer {
     flex-basis: 1132px;
     display:flex;
     justify-content: space-between;
     align-items: center;
     color:white;
     text-align: center;
-    
-    
 }
 
-header {
+nav {
     position: fixed;
     top: 0;
     width:100%;
@@ -35,7 +39,7 @@ header {
     z-index: 2000;
 }
 
-#slice1 {
+#backgroundImageSlice {
     height:700px;
     background: linear-gradient(to top, #020917, transparent ), url('background.png');
     background-repeat: no-repeat;
@@ -53,15 +57,14 @@ header {
     font-size: 1.5em;
     margin-top: 50px;
     align-self: center;
-    
+    height:100%;
 }
 
 #navButtonContainer {
     height:100%;
     display:flex;
     align-items: center;
-    justify-content: space-around;
-    
+    justify-content: space-around;   
 }
 
 .navButton {
@@ -71,15 +74,8 @@ header {
     font-size: .9em;
     line-height: 70px;
     text-align: center;
-    transition-duration: .6s;
-    
-    
-    
-        
+    transition-duration: .6s;     
 }
-
-
-/*Transitions*/
 
 .navButton:hover{
     transition-property: background;
@@ -91,7 +87,6 @@ header {
     flex-direction: column;
     background:#171C25;
     justify-content: center;
-    
 }
 
 .titleSlice {
@@ -99,35 +94,19 @@ header {
     border-left:5px solid #556271;
     display:flex;
     align-items: center;
-    
-    
 }
 
-#slice3 {
+#servicesSlice {
     height:350px;
     display:flex;
     justify-content: space-between;
     
 }
 
-#slice4 {
+#videoSlice {
     height:800px;
     margin-top:100px;
     position:relative;
-    
-
-}
-
-
-
-
-#slice2 h3{
-    padding-left:15px;
-    vertical-align: middle;
-    margin:0;
-    display:inline;
-    
-    
 }
 
 .coreService {
@@ -141,19 +120,14 @@ header {
 .coreService:hover{
     transform: scale(1.1);
     box-shadow: 10px 10px 5px black;
-    
 }
+
 .coreService:hover .CSContent{
     opacity: 1;
-    
 }
+
 .coreService:hover .CSImage{
     opacity: .1;
-}
-
-
-#discord {
-
 }
 
 #discordImage {
@@ -165,13 +139,6 @@ header {
     background-position: 50% 17px;
     transition-duration: .4s;
     background-size: 340px ;
-    
-
-    
-}
-
-#twitch {
-
 }
 
 #twitchImage {
@@ -183,19 +150,6 @@ header {
     background-position: center;
     background-size: 240px;
     transition-duration: .4s;
-    
-}
-
-
-.CSContent {
-    display:block;
-    position:relative;
-    bottom: 60%;
-    text-align: center;
-    opacity: 0;
-    transition-duration: .4s;
-    cursor: pointer;
-    
 }
 
 #twitterImage {
@@ -209,13 +163,20 @@ header {
     background-size: 340px ;
 }
 
+.CSContent {
+    display:block;
+    position:relative;
+    bottom: 60%;
+    text-align: center;
+    opacity: 0;
+    transition-duration: .4s;
+    cursor: pointer;   
+}
+
 #video-background {
     width:100%;
     overflow: hidden;
-
 }
-
-
 
 .overlay {
     position: absolute;
@@ -245,20 +206,15 @@ header {
     width:500px;
     line-height: 100px;
     transition-duration: .6s;
-    
-    
-
 }
+
 .overlayText:hover, #gameplayLink{
     background-color:#020917;
 }
 
-
 #overlayContentContainer {
     border: 3px solid #171C25;
-    
 }
-
 
 #graphSVG {
     max-height:100%;
@@ -269,24 +225,24 @@ header {
     display:flex;
     flex-direction: column;
 }
+
 #slice5 div{
     flex:1;
 }
-
 
 #statsTitle {
     height:50px;
     border-left:5px solid #556271;
     display:flex;
     align-items: center;
-        
 }
 
 #statsContent {
     height:350px;
     display:flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
+    padding-bottom:8%;
 }
 
 #statSVGContainer {
@@ -309,6 +265,22 @@ header {
     background-size: 300px ;
 }
 
-#StatImgContainer {
+footer{
+    background-color:#040C1A;
+    color:white;
+    margin:auto;
+    width:65%;
+    text-align:center;
+    margin-bottom:2%;
+}
 
+#footerline{
+   padding-bottom:25px;
+}
+
+#logo-text{
+    font-family: esp;
+    font-size: 35px;
+    /* esp font is defined at the top of this file.
+    We can change it whenever. */
 }
