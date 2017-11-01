@@ -1,0 +1,286 @@
+*{
+    font-family: 'raleway';
+    text-decoration-line: none;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #040C1A;
+    display:flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    
+}
+
+@font-face{
+    font-family: esp;
+    src:url("fonts/esp.ttf")
+}
+
+#headerFlexContainer {
+    flex-basis: 1132px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+    text-align: center;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width:100%;
+    flex:2;
+    height:70px;
+    background:#040C1A;
+    opacity:.9;
+    display:flex;
+    justify-content: center;
+    z-index: 2000;
+}
+
+#backgroundImageSlice {
+    height:700px;
+    background: linear-gradient(to top, #020917, transparent ), url('background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    width:100%;
+
+}
+
+.informationSlice {
+/*    width:57%;*/
+    width:1132px;
+    font-family: "work sans";
+    color:white;
+    font-size: 1.5em;
+    margin-top: 50px;
+    align-self: center;
+    height:100%;
+}
+
+#navButtonContainer {
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;   
+}
+
+.navButton {
+    height:100%;
+    padding: 0 30px;
+    font-family: inherit;
+    font-size: .9em;
+    line-height: 70px;
+    text-align: center;
+    transition-duration: .6s;     
+}
+
+.navButton:hover{
+    transition-property: background;
+    background: #4D5D71;
+}
+
+.mainContent {
+    display:flex;
+    flex-direction: column;
+    background:#171C25;
+    justify-content: center;
+}
+
+.titleSlice {
+    height:50px;
+    border-left:5px solid #556271;
+    display:flex;
+    align-items: center;
+}
+
+#servicesSlice {
+    height:350px;
+    display:flex;
+    justify-content: space-between;
+    
+}
+
+#videoSlice {
+    height:800px;
+    margin-top:100px;
+    position:relative;
+}
+
+.coreService {
+    width:350px;
+    transition:.4s;
+    box-shadow: 10px 10px 25px black;
+    background:#23272A;
+
+}
+
+.coreService:hover{
+    transform: scale(1.1);
+    box-shadow: 10px 10px 5px black;
+}
+
+.coreService:hover .CSContent{
+    opacity: 1;
+}
+
+.coreService:hover .CSImage{
+    opacity: .1;
+}
+
+#discordImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/Discord-Logo-Color.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    transition-duration: .4s;
+    background-size: 340px ;
+}
+
+#twitchImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/Glitch_Purple_RGB.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 240px;
+    transition-duration: .4s;
+}
+
+#twitterImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/Twitter_Logo_Blue.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    transition-duration: .4s;
+    background-size: 340px ;
+}
+
+.CSContent {
+    display:block;
+    position:relative;
+    bottom: 60%;
+    text-align: center;
+    opacity: 0;
+    transition-duration: .4s;
+    cursor: pointer;   
+}
+
+#video-background {
+    width:100%;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    display:flex;
+    flex-direction:column;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index: 2;
+    background-color: rgba(2, 9, 23,0.8);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#videoContainer {
+    z-index: 1;
+    height:800px;
+    overflow: hidden;
+}
+
+.overlayText {
+    margin:0;
+    font-size: 3em;
+    color:white;
+    font-family: "work sans";
+    width:500px;
+    line-height: 100px;
+    transition-duration: .6s;
+}
+
+.overlayText:hover, #gameplayLink{
+    background-color:#020917;
+}
+
+#overlayContentContainer {
+    border: 3px solid #171C25;
+}
+
+#graphSVG {
+    max-height:100%;
+}
+
+#slice5 {
+    height:450px;
+    display:flex;
+    flex-direction: column;
+}
+
+#slice5 div{
+    flex:1;
+}
+
+#statsTitle {
+    height:50px;
+    border-left:5px solid #556271;
+    display:flex;
+    align-items: center;
+}
+
+#statsContent {
+    height:350px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom:8%;
+}
+
+#statSVGContainer {
+    max-height: 100%;
+    flex:1;
+}
+
+#statsParagraph {
+    width:700px;
+}
+
+#statsImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/bars-chart.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    transition-duration: .4s;
+    background-size: 300px ;
+}
+
+footer{
+    background-color:#040C1A;
+    color:white;
+    margin:auto;
+    width:65%;
+    text-align:center;
+    margin-bottom:2%;
+}
+
+#footerline{
+   padding-bottom:25px;
+}
+
+#logo-text{
+    font-family: esp;
+    font-size: 35px;
+    /* esp font is defined at the top of this file.
+    We can change it whenever. */
+}
