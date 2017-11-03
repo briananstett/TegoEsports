@@ -4,6 +4,21 @@
     src: url('fonts/SFSportsNight.ttf') format('truetype');
 }
 
+/* For smaller screens: */
+@media only screen and (max-width: 1139px) {
+    
+    #navLogo, #services{
+        margin-left:10%;
+    }
+}
+
+/* For mobile screens: */
+@media only screen and (max-width: 839px) {
+
+    #tegoButtonRow, #statsRow{
+        width: 600px;
+    }
+}
 
 /* Everyone */
 *{
