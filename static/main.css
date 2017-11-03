@@ -4,21 +4,6 @@
     src: url('fonts/SFSportsNight.ttf') format('truetype');
 }
 
-/* For smaller screens: */
-@media only screen and (max-width: 1139px) {
-    
-    #navLogo, #services{
-        margin-left:10%;
-    }
-}
-
-/* For mobile screens: */
-@media only screen and (max-width: 839px) {
-
-    #tegoButtonRow, #statsRow{
-        width: 600px;
-    }
-}
 
 /* Everyone */
 *{
@@ -245,7 +230,6 @@ body {
     opacity: .1;
 }
 
-
 /* Misc. */
 
 #landingImage {
@@ -284,4 +268,96 @@ footer{
 
 #footerLine{
     width: 65%;
+}
+
+/*You are now entering the Hamburger Zone*/
+.hamburger{
+    background:none;
+    position:absolute;
+    top:5;
+    left:0;
+    line-height:45px;
+    padding:5px 15px 0px 15px;
+    color:white;
+    border:0;
+    font-size:1.8em;
+    font-weight:bold;
+    cursor:pointer;
+    outline:none;
+    z-index:10000000000000;
+    visibility:hidden;
+ 
+  }
+  .cross{
+    background:none;
+    position:absolute;
+    top:5;
+    left:0;
+    padding:7px 15px 0px 15px;
+    color:white;
+    border:0;
+    font-size:3em;
+    line-height:65px;
+    font-weight:bold;
+    cursor:pointer;
+    outline:none;
+    z-index:10000000000000;
+  }
+  .menu{z-index:1000000; font-weight:bold; font-size:0.8em; width:100%; background:#171C25;  position:absolute; text-align:center; font-size:12px; top:70; left:0;}
+  .menu ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none;}
+  .menu li {display: block;   padding:15px 0 15px 0; border-bottom:#dddddd 1px solid;}
+  .menu li:hover{display: block;    background:#ffffff; padding:15px 0 15px 0; border-bottom:#dddddd 1px solid; color: #171C25;}
+  .menu ul li a { text-decoration:none;  margin: 0px; color:#666;}
+  .menu ul li a:hover {  color: #666; text-decoration:none;}
+  .menu a{text-decoration:none; color:#666;}
+  .menu a:hover{text-decoration:none; color:#666;}
+  span{padding-left:20px;}
+
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }
+
+
+
+  /* MEDIA QUERIES: */
+/* For smaller screens: */
+@media only screen and (max-width: 1139px) {
+    
+    #navLogo, #services{
+        margin-left:10%;
+    }
+}
+
+/* For mobile screens: */
+@media only screen and (max-width: 839px) {
+
+    .navBarItems{
+        display:none;
+    }
+
+    #navlogo{
+        position:absolute;
+        top:0;
+        right:5%;
+    }
+
+    .hamburger{
+        visibility: visible;
+    }
+
+    #tegoButtonRow, #statsRow{
+        width: 600px;
+    }
+}
+
+@media only screen and (min-width: 839px) {
+.menu, .cross{
+    visibility: hidden;
+}
 }

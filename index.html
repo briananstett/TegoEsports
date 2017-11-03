@@ -4,12 +4,25 @@
         <link rel= "stylesheet" href="static/main.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway|Russo+One|Work+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <script src="static\jquery-3.2.1.js"></script>
+        <script src="static\scripts.js"></script>
     </head>
     <body class="grey">
         <div>
             <nav id="navBar" class="smallSlice">
+                <div class="menu">
+                        <ul>
+                            <a href="#"><li>LINK ONE</li></a>
+                            <a href="#"><li>LINK TWO</li></a>
+                            <a href="#"><li>LINK THREE</li></a>
+                            <a href="#"><li>LINK FOUR</li></a>
+                            <a href="#"><li>LINK FIVE</li></a>
+                        </ul>
+                </div> 
                 <div class="flexRow">
-                    <a id="navLogo" href="#">TeGo</a>
+                    <button class="hamburger noselect">&#9776;</button>
+                    <button class="cross noselect">&#735;</button>
+                    <a id="navLogo" class="noselect" href="#">TeGo</a>
                     <a class="navBarItems" href="#">Team Members</a>
                     <a class="navBarItems" href="#">Login</a>
                     <a class="navBarItems" href="#">Contact</a>
@@ -73,7 +86,6 @@
                 </div>
             </div>
             <div class="smallSlice blue">
-                    
                     <p>Created 2017, TeGo Enterprises</p>
             </div>
         </div>
