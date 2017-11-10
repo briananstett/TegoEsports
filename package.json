@@ -1,0 +1,21 @@
+{
+  "name": "TeGo-Esports-Official-Web-Page",
+  "version": "1.0.0",
+  "description": "TeGo's main web page. An Express project",
+  "author": "TeGo Esports",
+  "private": true,
+  "scripts": {
+    "start": "node ./app"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.13.3",
+    "connect-mongo": "^2.0.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongoose": "^4.13.0",
+    "package.json": "^2.0.1",
+    "pug": "^2.0.0-rc.4"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,40 @@
+extends layout
+block content
+    .xLargeSlice.mainImageSlice
+      // Image defined in CSS
+    .mediumSlice.grey
+      .flexRow
+        h3#services Our Services
+    .largeSlice.grey.margin-bottom
+      #tegoButtonRow.flexRow
+        .tegoButton
+          a#discordImage.tegoButtonImage(href='#')
+          span.tegoButtonContent Use Discord?
+          span.tegoButtonContent So do we!
+        .tegoButton
+          a#twitchImage.tegoButtonImage(href='#')
+          span.tegoButtonContent We Stream Too!
+        .tegoButton
+          a#twitterImage.tegoButtonImage(href='#')
+          span.tegoButtonContent Follows Us On Twitter
+          span.tegoButtonContent For TeGo Updates
+    .videoCSS
+      #videoContainer
+        video#video-background(autoplay='', loop='', muted='', plays-inline='')
+          source(src='static/videos/League%20of%20Legends.mp4', type='video/mp4')
+      .videoOverlay
+        #videoOverlayContentContainer
+          a#gameplayLink(href='#')
+            h1.videoOverlayText See Our Gameplay
+    .mediumSlice.grey
+      .flexRow
+        h3#services Improve Your Game
+    .largeSlice.grey.margin-bottom
+      #statsRow.flexRow
+        .tegoButton
+          a#statsImage.tegoButtonImage(href='#')
+          span.tegoButtonContent Start Tracking Your Stats!
+        #statsParagraph
+          h2 Track Your Stats Against Other Members
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat, tortor sed sodales commodo, neque enim blandit sem, malesuada scelerisque nisi nisl vitae orci. Aliquam eleifend justo vitae elit mattis, ac consectetur tellus sollicitudin. Nunc fermentum ipsum eget nibh pellentesque elementum. Etiam eget lectus vel justo pretium suscipit. Cras sed efficitur sapien, nec aliquet elit. Nulla suscipit ipsum risus, sit amet mollis turpis pulvinar id. Vestibulum finibus orci sed libero cursus venenatis. Integer venenatis massa justo, vel placerat velit vehicula vitae. Donec bibendum libero id tristique efficitur.

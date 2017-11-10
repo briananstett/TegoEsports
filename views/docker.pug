@@ -1,0 +1,12 @@
+extends layout
+block content
+
+    .largeSlice
+        .flexRow
+            h1=currentUser
+            h1 Your Containers
+            p=containers
+                each container in containers
+                    ul
+                        each index, val in container
+                            li= index + ":" + val

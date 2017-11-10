@@ -1,0 +1,11 @@
+extends layout
+block content
+
+    .largeSlice.grey.margin-bottom
+        #tegoButtonRow.flexRow
+            form(method='POST' action='/login')
+                label(for='username') Username
+                input(type='text' id ='username' placeholder='username' name='username' style='color:black;')
+                label(for='password') Password
+                input(type='password' id ='password' placeholder='password' name='password' style='color:black;')
+                button(type='submit') Submit

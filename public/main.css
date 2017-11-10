@@ -1,0 +1,363 @@
+/* Fonts */
+@font-face{
+    font-family: 'Sport Regular';
+    src: url('fonts/SFSportsNight.ttf') format('truetype');
+}
+
+
+/* Everyone */
+*{
+    font-family: 'raleway';
+    text-decoration-line: none;
+    color:white;
+}
+
+/* Body */
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+
+/* NavBar */
+#navBar {
+    background:#040C1A;
+    opacity:.9;
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+}
+.navBarItems{
+    flex-basis: content;
+    font-size: .9em;
+    padding: 0 30px;
+    line-height: 70px;
+    transition-duration: .6s;    
+}
+#navLogo{
+    margin-right: auto;
+    font-size:40px;
+    font-family: 'Sport Regular';
+    flex-basis: content;
+
+    line-height: 70px;
+        
+}
+
+
+/* Flex classes */
+.flexRow{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 1132px;
+}
+
+/* Slices */
+.smallSlice{
+    height: 70px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+.mediumSlice{
+    height:125px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+.largeSlice{
+    min-height: 450px;
+    height: auto;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    
+}
+.xLargeSlice{
+    height:700px;
+    width: 100%;
+}
+.xxLargeSlice{
+    height:800px;
+    width: 100%; 
+}
+
+/* Main image on home page */
+.mainImageSlice{
+    /* Image the entire slice  */
+
+    background: linear-gradient(to top, #020917, transparent ), url('background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}
+
+/* Slice Colors */
+.grey{
+    background-color: #171c25;
+}
+.blue{
+    background-color:#040C1A;
+}
+
+/* Tego Button */
+.tegoButton{
+    width:350px;
+    height:350px;
+    transition:.4s;
+    box-shadow: 10px 10px 25px black;
+    background:#23272A;
+    margin: 13px;
+}
+.tegoButtonContent{
+    font-size: 1.5em;
+    display:block;
+    position:relative;
+    bottom: 60%;
+    text-align: center;
+    opacity: 0;
+    transition-duration: .4s;
+    cursor: pointer;   
+}
+#discordImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/Discord-Logo-Color.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    transition-duration: .4s;
+    background-size: 340px ;
+}
+#twitchImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/Glitch_Purple_RGB.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 240px;
+    transition-duration: .4s;
+}
+#twitterImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/Twitter_Logo_Blue.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    transition-duration: .4s;
+    background-size: 340px ;
+}
+#statsImage {
+    flex:1;
+    display:block;
+    height:100%;
+    background-image: url("images/bars-chart.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 17px;
+    transition-duration: .4s;
+    background-size: 300px ;
+}
+
+
+/* Video CSS */
+#videoContainer {
+    z-index: 1;
+    max-height: 750px;
+    overflow: hidden;
+}
+#video-background{
+    width:100%;
+    overflow: hidden;
+}
+.videoOverlay{
+    position: absolute;
+    display:flex;
+    flex-direction:column;
+    top:0;
+    height: 100%;
+    width:100%;
+    z-index: 2;
+    background-color: rgba(2, 9, 23,0.8);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.videoCSS{
+    position:relative;
+    width:100%;
+    display: inline-block;       
+}
+#videoOverlayContentContainer {
+    border: 3px solid #171C25;
+}
+.videoOverlayText {
+    margin:0;
+    font-size: 3em;
+    color:white;
+    font-family: "work sans";
+    width:500px;
+    line-height: 100px;
+    transition-duration: .6s;
+}
+
+.videoOverlayText:hover, #gameplayLink{
+    background-color:#020917;
+}
+
+
+
+
+
+/* Hover */
+.navBarItems:hover{
+    transition-property: background;
+    background: #4D5D71;
+}
+.tegoButton:hover{
+    transform: scale(1.1);
+    box-shadow: 10px 10px 5px black;
+}
+.tegoButton:hover .tegoButtonContent{
+    opacity: 1;
+}
+.tegoButton:hover .tegoButtonImage{
+    opacity: .1;
+}
+
+/* Misc. */
+
+#landingImage {
+    background: linear-gradient(to top, #020917, transparent ), url('background.png');
+}
+
+#services {
+    border-left:5px solid #556271;
+    margin-right:auto;
+    margin-top:0;
+    margin-bottom: 0;
+    font-size: 1.9em;
+    height: 1.9em;
+    line-height: 60px;
+}
+#statsParagraph {
+    width:700px;
+    text-align: center;
+    padding:28px;
+}
+#statsParagraph >p{
+    text-align: center;
+    font-size: 1.5em;
+}
+.margin-bottom{
+    margin-bottom: 25px;
+}
+footer{
+    background-color:#040C1A;
+    color:white;
+    margin:auto;
+    width:65%;
+    text-align:center;
+    margin-bottom:2%;
+}
+
+#footerLine{
+    width: 65%;
+}
+
+/*You are now entering the Hamburger Zone*/
+.hamburger{
+    background:none;
+    position:absolute;
+    top:5;
+    left:0;
+    line-height:45px;
+    padding:5px 15px 0px 15px;
+    color:white;
+    border:0;
+    font-size:1.8em;
+    font-weight:bold;
+    cursor:pointer;
+    outline:none;
+    z-index:10000000000000;
+    visibility:hidden;
+ 
+  }
+  .cross{
+    background:none;
+    position:absolute;
+    top:5;
+    left:0;
+    padding:7px 15px 0px 15px;
+    color:white;
+    border:0;
+    font-size:3em;
+    line-height:65px;
+    font-weight:bold;
+    cursor:pointer;
+    outline:none;
+    z-index:10000000000000;
+  }
+  .menu{z-index:1000000; font-weight:bold; font-size:0.8em; width:100%; background:#171C25;  position:absolute; text-align:center; font-size:12px; top:70; left:0;}
+  .menu ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none;}
+  .menu li {display: block;   padding:15px 0 15px 0; border-bottom:#dddddd 1px solid;}
+  .menu li:hover{display: block;    background:#ffffff; padding:15px 0 15px 0; border-bottom:#dddddd 1px solid; color: #171C25;}
+  .menu ul li a { text-decoration:none;  margin: 0px; color:#666;}
+  .menu ul li a:hover {  color: #666; text-decoration:none;}
+  .menu a{text-decoration:none; color:#666;}
+  .menu a:hover{text-decoration:none; color:#666;}
+  span{padding-left:20px;}
+
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }
+
+
+
+  /* MEDIA QUERIES: */
+/* For smaller screens: */
+@media only screen and (max-width: 1139px) {
+    
+    #navLogo, #services{
+        margin-left:10%;
+    }
+}
+
+/* For mobile screens: */
+@media only screen and (max-width: 839px) {
+
+    .navBarItems{
+        display:none;
+    }
+
+    #navlogo{
+        position:absolute;
+        top:0;
+        right:5%;
+    }
+
+    .hamburger{
+        visibility: visible;
+    }
+
+    #tegoButtonRow, #statsRow{
+        width: 600px;
+    }
+}
+
+@media only screen and (min-width: 839px) {
+.menu, .cross{
+    visibility: hidden;
+}
+}
