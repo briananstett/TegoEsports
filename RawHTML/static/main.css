@@ -271,6 +271,33 @@ footer{
     width: 65%;
 }
 
+
+#clipped{
+    z-index: 99999;
+    position:absolute;
+    top:70;
+    right:0;
+    -webkit-clip-path: polygon(50% 0, 100% 50%, 100% 75%, 25% 0);
+    clip-path: polygon(50% 0, 100% 50%, 100% 75%, 25% 0);    
+}
+
+#alphaBanner{
+
+    z-index: 999999;
+    position:absolute;
+    top:98;
+    right:8;
+
+    /* Safari */  
+    -webkit-transform: rotate(32deg);
+    /* Firefox */
+    -moz-transform: rotate(32deg);
+    /* IE */
+    -ms-transform: rotate(32deg);
+    /* Opera */
+    -o-transform: rotate(32deg);
+}
+
 /*You are now entering the Hamburger Zone*/
 .hamburger{
     background:none;
@@ -281,7 +308,7 @@ footer{
     padding:5px 15px 0px 15px;
     color:white;
     border:0;
-    font-size:1.8em;
+    font-size:2em;
     font-weight:bold;
     cursor:pointer;
     outline:none;
@@ -297,7 +324,7 @@ footer{
     padding:7px 15px 0px 15px;
     color:white;
     border:0;
-    font-size:3em;
+    font-size:3.8em;
     line-height:65px;
     font-weight:bold;
     cursor:pointer;
