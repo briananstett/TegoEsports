@@ -4,8 +4,19 @@
         <link rel= "stylesheet" href="static/main.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway|Russo+One|Work+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
         <script src="static\jquery-3.2.1.js"></script>
         <script src="static\scripts.js"></script>
+        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+        <script>
+            $(function() {
+  AOS.init();
+});
+
+$(window).on('load', function() {
+  AOS.refresh();
+});
+        </script>
     </head>
     <body class="grey">
         <div>
@@ -22,32 +33,32 @@
                 <div class="flexRow">
                     <button class="hamburger noselect">&#9776;</button>
                     <button class="cross noselect">&#735;</button>
-                    <a id="navLogo" class="noselect" href="#">TeGo</a>
-                    <a class="navBarItems" href="#">Team Members</a>
-                    <a class="navBarItems" href="#">Login</a>
-                    <a class="navBarItems" href="#">Contact</a>
+                    <a data-aos="fade-right" id="navLogo" class="noselect" href="#">TeGo</a>
+                    <a data-aos="fade-left" class="navBarItems" href="#">Team Members</a>
+                    <a data-aos="fade-left" class="navBarItems" href="#">Login</a>
+                    <a data-aos="fade-left" class="navBarItems" href="#">Contact</a>
                 </div>   
             </nav>
             <div class="xLargeSlice mainImageSlice">
                     <!-- Image defined in CSS-->
             </div>
             <div class="mediumSlice grey">
-                <div class="flexRow">
+                <div data-aos="fade-right" class="flexRow">
                     <h3 id="services">Our Services</h3>
                 </div>
             </div>
             <div class="largeSlice grey margin-bottom">
                 <div class="flexRow" id="tegoButtonRow">
-                    <div class="tegoButton">
+                    <div  data-aos="fade-up" class="tegoButton">
                         <a id="discordImage" class="tegoButtonImage" href=#></a>
                         <span class="tegoButtonContent">Use Discord?</span>
                         <span class="tegoButtonContent">So do we!</span>
                     </div>
-                    <div class="tegoButton">
+                    <div data-aos="fade-up" class="tegoButton">
                         <a id="twitchImage" class="tegoButtonImage" href=#></a>
                         <span class="tegoButtonContent">We Stream Too!</span>
                     </div>  
-                    <div class="tegoButton">
+                    <div data-aos="fade-up" class="tegoButton">
                         <a id="twitterImage" class="tegoButtonImage" href=#></a>
                         <span class="tegoButtonContent">Follows Us On Twitter</span>
                         <span class="tegoButtonContent">For TeGo Updates</span>
@@ -61,7 +72,7 @@
                     </video>
                 </div>
                 <div class="videoOverlay">
-                    <div id="videoOverlayContentContainer">
+                    <div data-aos="fade-up" id="videoOverlayContentContainer">
                         <a id="gameplayLink" href="#">
                             <h1 class="videoOverlayText">See Our Gameplay</h1>
                         </a>
@@ -69,12 +80,12 @@
                 </div>
             </div>
             <div class="mediumSlice grey">
-                <div class="flexRow">
+                <div data-aos="fade-right" class="flexRow">
                     <h3 id="services">Improve Your Game</h3>
                 </div>
             </div>
             <div class="largeSlice grey margin-bottom">
-                <div class="flexRow" id="statsRow">
+                <div data-aos="fade-left" class="flexRow" id="statsRow">
                     <div class="tegoButton">
                         <a id="statsImage" class="tegoButtonImage" href=#></a>
                         <span class="tegoButtonContent">Start Tracking Your Stats!</span>
