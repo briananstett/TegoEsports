@@ -44,6 +44,22 @@ body {
     line-height: 70px;
         
 }
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableData, .tableHeader {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.tableRow:nth-child(even) {
+    background-color: #dddddd;
+    color:black;
+}
 
 
 /* Flex classes */

@@ -46,6 +46,7 @@ var UserSchema = new mongoose.Schema({
     },
     containers: [Containers]
 });
+
 //Check passwords
 UserSchema.statics.authenticate = function(username, password, cb){
     console.log("authenticate");

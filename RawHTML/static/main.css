@@ -218,6 +218,7 @@ body {
 .navBarItems:hover{
     transition-property: background;
     background: #4D5D71;
+    border: 3px solid white; 
 }
 .tegoButton:hover{
     transform: scale(1.1);
