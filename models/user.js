@@ -102,9 +102,12 @@ UserSchema.statics.getContainers = function(userId,cb){
             var error = new Error("Error while finding container");
             error.status = 703;
             return cb(error);
-        }else{
-            
+        }else if(containers){
             return cb(null, containers.containers);
+        }else{
+            var error = new Error("No matches found");
+            error.startStatus = 705;
+            return cb(error);
         }
     })
     
