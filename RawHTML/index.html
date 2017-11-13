@@ -5,8 +5,9 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway|Russo+One|Work+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-        <script src="static\jquery-3.2.1.js"></script>
-        <script src="static\scripts.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+        <script src="static/jquery-3.2.1.js"></script>
+        <script src="static/scripts.js"></script>
         <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
         <script>
             $(function() {
@@ -20,6 +21,7 @@ $(window).on('load', function() {
     </head>
     <body class="grey">
         <div>
+            <nav id="background" class="smallSlice"></nav>
             <nav id="navBar" class="smallSlice">
                     <h3 id="alphaBanner">Alpha Version 0.1</h3>
                     <img id="clipped" src="static\images\greybannerimage.jpg">
@@ -35,14 +37,43 @@ $(window).on('load', function() {
                 <div class="flexRow">
                     <button class="hamburger noselect">&#9776;</button>
                     <button class="cross noselect">&#735;</button>
-                    <a data-aos="fade-right" id="navLogo" class="noselect" href="#">TeGo</a>
-                    <a data-aos="fade-left" class="navBarItems" href="#">Team Members</a>
-                    <a data-aos="fade-left" class="navBarItems" href="#">Login</a>
-                    <a data-aos="fade-left" class="navBarItems" href="#">Contact</a>
+                    <a data-aos="fade-right" id="navLogo" class="noselect" href="#"><img src="static/images/TEGO_Logo.png" id="tegoImg"></a>
+                    <div data-aos="fade-left" id=navBarItemsContainer>
+                        <a class="navBarItems" href="#">Contact</a>
+                        <a class="navBarItems" href="#">Login</a>
+                        <a class="navBarItems" href="#">Store</a>
+                        <a id='teamMembers' href="#">Team Members</a>
+                    </div>
                 </div>   
             </nav>
             <div class="xLargeSlice mainImageSlice">
-                    <!-- Image defined in CSS-->
+                <div style="justify-content: space-around;" class="flexRow">
+                    <div data-aos="fade-right" id=headerParagraph>
+                        <div id="weAreDiv">
+                            <h1>We are</h1>
+                            <h1>
+                                <a href="" class="typewrite" data-period="2000" data-type='[ "TeGo", "Gamers", "Developers", "Musicians", "Designers", "Artists", "Engineers" ]'>
+                                <span class="wrap"></span>
+                                </a>
+                            </h1>
+                        </div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    </div>
+                    <div data-aos="fade-left" id="loginDiv">
+                        <p style="margin-top:10px;">
+                            <strong>Log in instructions here.</strong> I'm not sure what kind of direction people would need, but you never know these days.
+                        </p>
+                        <form>
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password">
+                            <input type="button" value="LOGIN">
+                        </form>
+                        <p>Not a memeber? <a style="text-decoration:underline;" href="#">create an account</a></p>
+                        
+                    </div>
+                </div>
             </div>
             <div class="mediumSlice grey">
                 <div data-aos="fade-right" class="flexRow">

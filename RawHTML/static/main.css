@@ -22,25 +22,49 @@ body {
 
 /* NavBar */
 #navBar {
-    background:#040C1A;
+    background:transparent;
     opacity:.9;
     position: fixed;
     top: 0;
     z-index: 2000;
 }
+#background{
+    background-color:#402365;
+    opacity:.7;
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    display: none;
+}
 .navBarItems{
     flex-basis: content;
     font-size: .9em;
-    padding: 0 30px;
-    line-height: 70px;
-    transition-duration: .6s;    
+    padding: 0 20px;
+    line-height: 32px;
+    border: 2px solid transparent;
+    transition-duration: .6s;
+    height:100%;
+}
+#teamMembers{
+    flex-basis: content;
+    font-size: .9em;
+    padding: 0 20px;
+    line-height: 32px;
+    transition-duration: 1s;
+    height:100%;
+    border: 2px solid white;
+}
+#navBarItemsContainer{
+    height:30px;
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: center
 }
 #navLogo{
     margin-right: auto;
     font-size:40px;
     font-family: 'Sport Regular';
     flex-basis: content;
-
     line-height: 70px;
         
 }
@@ -80,6 +104,8 @@ body {
 .xLargeSlice{
     height:700px;
     width: 100%;
+    display:flex;
+    justify-content: center;
 }
 .xxLargeSlice{
     height:800px;
@@ -89,9 +115,7 @@ body {
 /* Main image on home page */
 .mainImageSlice{
     /* Image the entire slice  */
-
-    background: linear-gradient(to top, #020917, transparent ), url('background.png');
-    background-repeat: no-repeat;
+    background: url('../static/images/Header_Image.jpg');
     background-position: center;
     background-size:cover;
 }
@@ -112,6 +136,7 @@ body {
     box-shadow: 10px 10px 25px black;
     background:#23272A;
     margin: 13px;
+    border-radius: 50px;
 }
 .tegoButtonContent{
     font-size: 1.5em;
@@ -183,7 +208,7 @@ body {
     height: 100%;
     width:100%;
     z-index: 2;
-    background-color: rgba(2, 9, 23,0.8);
+    background-color: rgba(64,35,101,0.8);
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -216,8 +241,11 @@ body {
 
 /* Hover */
 .navBarItems:hover{
-    transition-property: background;
-    background: #4D5D71; 
+    transition-property: border;
+    border: 2px solid white;
+}
+.navBarItems:hover ~ #teamMembers{
+    border:2px solid transparent;
 }
 .tegoButton:hover{
     transform: scale(1.1);
@@ -387,4 +415,93 @@ footer{
 .menu, .cross{
     visibility: hidden;
 }
+}
+
+#tegoImg {
+    position: absolute;
+    top:-30px;
+    width:100px;
+}
+
+#loginDiv {
+    width:270px;
+    height: 290;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 10px 10px 25px black;
+}
+#loginDiv form, #loginDiv p{
+    width:80%;
+    margin:0;
+}
+#loginDiv p, #loginDiv a{
+    font-family:'Titillium Reg', sans-serif;
+    color:#402365;
+    font-size: 13px;
+    text-align: left;
+}
+#loginDiv strong{
+    font-family:'Titillium Reg', sans-serif;
+    color:#402365;
+}
+#loginDiv input, #loginDiv label {
+    font-family:'Titillium Reg', sans-serif;
+    color:#402365;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#loginDiv input{
+    display: block;
+    width: 100%;
+    height:27px;
+    background-color: #e5e5e5;
+    border:none;
+    border-radius: 15px;
+    outline:0;
+}
+#loginDiv input{
+    margin-bottom: 10px;
+    text-indent: 10px;
+    
+}
+#loginDiv input[type=button]{
+    font-family:'Titillium Black', sans-serif;
+    background-color:#402365;
+    border:none;
+    height:40px;
+    border-radius: 20px;
+    color:#ffffff;
+    text-indent: 0;
+    font-size: 18;
+    cursor:pointer;
+    transition-duration: .6s;
+}
+#loginDiv input[type=button]:hover{
+    background-color:#5c3291;
+}
+#headerParagraph{
+    width:550px;
+    text-align: center;
+}
+#headerParagraph p{
+    font-family:'Titillium Reg', sans-serif;
+    font-size: 25px;
+}
+#weAreDiv{
+    display: flex;
+    flex-direction: row;
+    font-size: 30;
+    text-align: right;
+}
+#weAreDiv h1{
+    font-family:'Titillium Black', sans-serif;
+    margin:0;
+}
+.spaceAround{
+    align-content: space-around;
 }

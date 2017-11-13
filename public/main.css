@@ -36,8 +36,9 @@ body {
     transition-duration: .6s;    
 }
 #navLogo{
+    height:3opx;
+    width:30px;
     margin-right: auto;
-    font-size:40px;
     font-family: 'Sport Regular';
     flex-basis: content;
 
@@ -94,7 +95,7 @@ body {
     
 }
 .xLargeSlice{
-    height:700px;
+    height:643px;
     width: 100%;
 }
 .xxLargeSlice{
@@ -105,7 +106,6 @@ body {
 /* Main image on home page */
 .mainImageSlice{
     /* Image the entire slice  */
-
     background: linear-gradient(to top, #020917, transparent ), url('background.png');
     background-repeat: no-repeat;
     background-position: center;
