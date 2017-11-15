@@ -40,13 +40,15 @@ router.get('/team-members', function(req, res, next){
 // });
 
 /*      Routes for docker      */
-router.get('/docker', middle.requireLogin, middle.getDockerImages, function(req, res, next){
+router.get('/docker', middle.requireLogin, middle.getDockerImages, middle.getUserContainers, function(req, res, next){
     console.log(res.locals.dockerImages);
+    console.log("in docker route");
+    console.log(res.locals.userContainersDocker);
     userModel.getContainers(req.session.userId,function(error, userContainers){
         if(error){
+            console.log("error");
             return next(error)
         }else{
-            console.log(userContainers);
             //req.session.containers=userContainers.containers[0];
             return res.render('docker',{containers: userContainers});
             
@@ -55,15 +57,15 @@ router.get('/docker', middle.requireLogin, middle.getDockerImages, function(req,
 
 });
 
-router.get('/test', function(req, res, next){
+router.get('/create-container', function(req, res, next){
     var newContainer = {
         dateCreated: new Date,
-        createdStatus: false,
-        startStatus: false,
-        Name: "Test Container",
-        ID: "000000",
+        createdStatus: true,
+        startStatus: true,
+        Name: "/mc",
+        ID: "7a0f380ec3081b036f22da65b6cb7e5bbfb5635b8878ed3d7cb5ddd792385757",
         exposedPorts: "",
-        image: "test"
+        image: "itzg/minecraft-server"
     };    
     userModel.createContainer(req.session.userId,newContainer, function(error, updatedUser){
         if(error){
