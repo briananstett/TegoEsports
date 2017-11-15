@@ -3,6 +3,23 @@
     font-family: 'Sport Regular';
     src: url('fonts/SFSportsNight.ttf') format('truetype');
 }
+@font-face{
+    font-family: 'TitilliumWeb-Black';
+    src: url('fonts/TitilliumWeb-Black.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'TitilliumWeb-Bold';
+    src: url('fonts/TitilliumWeb-Bold.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'TitilliumWeb-Regular';
+    src: url('fonts/TitilliumWeb-Regular.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'TitilliumWeb-SemiBold';
+    src: url('fonts/TitilliumWeb-SemiBold.ttf') format('truetype');
+}
+
 
 
 /* Everyone */
@@ -30,15 +47,16 @@ body {
 }
 #background{
     background-color:#402365;
-    opacity:.7;
     position: fixed;
     top: 0;
     z-index: 2000;
     display: none;
+    
 }
 .navBarItems{
+    font-family: 'TitilliumWeb-Bold';
     flex-basis: content;
-    font-size: .9em;
+    font-size: 13pt ;
     padding: 0 20px;
     line-height: 32px;
     border: 2px solid transparent;
@@ -130,13 +148,13 @@ body {
 
 /* Tego Button */
 .tegoButton{
-    width:350px;
-    height:350px;
+    width:300px;
+    height:300px;
     transition:.4s;
-    box-shadow: 10px 10px 25px black;
+/*    box-shadow: 10px 10px 25px black;*/
     background:#23272A;
     margin: 13px;
-    border-radius: 50px;
+    border-radius: 150px;
 }
 .tegoButtonContent{
     font-size: 1.5em;
@@ -249,7 +267,7 @@ body {
 }
 .tegoButton:hover{
     transform: scale(1.1);
-    box-shadow: 10px 10px 5px black;
+/*    box-shadow: 10px 10px 5px black;*/
 }
 .tegoButton:hover .tegoButtonContent{
     opacity: 1;
@@ -439,23 +457,29 @@ footer{
     margin:0;
 }
 #loginDiv p, #loginDiv a{
-    font-family:'Titillium Reg', sans-serif;
+    font-family:'TitilliumWeb-SemiBold';
+    line-height: 12pt;
     color:#402365;
     font-size: 13px;
-    text-align: left;
+    text-align: center;
+}
+#loginDiv #notAMember{
+    position:relative;
+    top:-12px;
 }
 #loginDiv strong{
-    font-family:'Titillium Reg', sans-serif;
+    font-family:'TitilliumWeb-Bold';
     color:#402365;
 }
 #loginDiv input, #loginDiv label {
-    font-family:'Titillium Reg', sans-serif;
+    font-family:'TitilliumWeb-Bold';
     color:#402365;
     font-weight: 600;
     font-size: 14px;
 }
 
 #loginDiv input{
+    font-family:'TitilliumWeb-SemiBold';
     display: block;
     width: 100%;
     height:27px;
@@ -463,34 +487,34 @@ footer{
     border:none;
     border-radius: 15px;
     outline:0;
-}
-#loginDiv input{
     margin-bottom: 10px;
     text-indent: 10px;
-    
 }
 #loginDiv input[type=button]{
-    font-family:'Titillium Black', sans-serif;
+    font-family:'TitilliumWeb-Black';
     background-color:#402365;
     border:none;
     height:40px;
     border-radius: 20px;
     color:#ffffff;
     text-indent: 0;
-    font-size: 18;
+    font-size: 16pt;
+    letter-spacing: 1px;
     cursor:pointer;
     transition-duration: .6s;
 }
 #loginDiv input[type=button]:hover{
-    background-color:#5c3291;
+    background-color:#832572;
 }
 #headerParagraph{
     width:550px;
-    text-align: center;
 }
 #headerParagraph p{
-    font-family:'Titillium Reg', sans-serif;
+    font-family:  'TitilliumWeb-SemiBold';
+    line-height: 28px;
     font-size: 25px;
+    text-align: left;
+    margin: 10;
 }
 #weAreDiv{
     display: flex;
@@ -498,10 +522,15 @@ footer{
     font-size: 30;
     text-align: right;
 }
-#weAreDiv h1{
-    font-family:'Titillium Black', sans-serif;
+#weAreDiv h1, .wrap{
+    font-family: 'TitilliumWeb-Black';
+    margin:0;
+    padding-right:20px;
+}
+.wrap{
+    padding:0;
     margin:0;
 }
-.spaceAround{
-    align-content: space-around;
+.typewrite{
+    border-bottom: 4px solid white;
 }
