@@ -41,19 +41,10 @@ router.get('/team-members', function(req, res, next){
 
 /*      Routes for docker      */
 router.get('/docker', middle.requireLogin, middle.getDockerImages, middle.getUserContainers, function(req, res, next){
-    console.log(res.locals.dockerImages);
     console.log("in docker route");
+    console.log(res.locals.dockerImages);
     console.log(res.locals.userContainersDocker);
-    userModel.getContainers(req.session.userId,function(error, userContainers){
-        if(error){
-            console.log("error");
-            return next(error)
-        }else{
-            //req.session.containers=userContainers.containers[0];
-            return res.render('docker',{containers: userContainers});
-            
-        }
-    });
+    return res.render('docker');
 
 });
 

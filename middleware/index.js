@@ -3,7 +3,6 @@ var appVariables = require('../AppVariables').appVariables;
 // var inspectContainerURI = require('../AppVariables').inspectContainerURI;
 var userModel = require('../models/user');
 function requireLogin(req, res, next){
-    console.log('here');
     if(req.session.userId){
         return next();
     }else{
@@ -14,14 +13,12 @@ function requireLogin(req, res, next){
 }
 
 function getDockerImages(req, res, next){
-    console.log("getDockerImages");
     var filteredImages =[];
     var options = {
         url: appVariables.imageRequest
     };
     request(options, function(error, response,body){
         if (!error && response.statusCode == 200) {
-            console.log("parsing");
             JSON.parse(body).forEach(function(image) {
                 filteredImages.push({
                     ID: image.Id,
@@ -50,6 +47,18 @@ function getUserContainers(req, res, next){
             //catch any errors from the model static function
             next(error);
         }
+        //MY stupid way to deal with asynchronus programming
+        var noContainers = userContainers.length;
+        var noCallbacks = 0;
+        function wait(){
+            noCallbacks +=1;
+            console.log(noCallbacks);
+            if (noCallbacks == noContainers){
+                res.locals.userContainersDocker = userContainersDocker;
+                //only move onto the next middleware function after all requests return
+                next();
+            }
+        }
         //loop through all the users containers that were returned from the database
         userContainers.forEach(function(container){
             var options = {
@@ -70,12 +79,9 @@ function getUserContainers(req, res, next){
                     error.statusCode = 706;
                     next(error);
                 }
+                wait();
             });
         });
-        console.log(userContainersDocker);
-        res.locals.userContainersDocker = userContainersDocker;
-        console.log("next");
-        next();
     });
 }
 

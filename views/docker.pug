@@ -6,30 +6,33 @@ block content
             h3 Manager Your Servers
     .largeSlice
         .flexRow
-            table.table
-                tr.tableRow
-                    th.tableHeader Server Name
-                    th.tableHeader Image
-                    th.tableHeader IP Address
-                    th.tableHeader Status
-                tr.tableRow
-                    td.tableData Minecraft
-                    td.tableData Image
-                    td.tableData Ip Address
-                    td.tableData 
-                        .w3-dropdown-hover
-                            button.w3-button.w3-black Status
-                            .w3-dropdown-content.w3-bar-block.w3-border
-                                a.w3-bar-item.w3-button(href='#') Link 1
-                                a.w3-bar-item.w3-button(href='#') Link 2
-                                a.w3-bar-item.w3-button(href='#') Link 3
+        if userContainersDocker
+            for container in userContainersDocker
+                p=container.Id
+        table.table
+            tr.tableRow
+                th.tableHeader Server Name
+                th.tableHeader Image
+                th.tableHeader IP Address
+                th.tableHeader Status
+            tr.tableRow
+                td.tableData Minecraft
+                td.tableData Image
+                td.tableData Ip Address
+                td.tableData 
+                    .w3-dropdown-hover
+                        button.w3-button.w3-black Status
+                        .w3-dropdown-content.w3-bar-block.w3-border
+                            a.w3-bar-item.w3-button(href='#') Link 1
+                            a.w3-bar-item.w3-button(href='#') Link 2
+                            a.w3-bar-item.w3-button(href='#') Link 3
 
 
-                tr.tableRow 
-                    td.tableData Minecraft
-                    td.tableData Image
-                    td.tableData Ip Address
-                    td.tableData Status
+            tr.tableRow 
+                td.tableData Minecraft
+                td.tableData Image
+                td.tableData Ip Address
+                td.tableData Status
 
                 //- each container in containers
                 //-     ul
