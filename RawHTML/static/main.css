@@ -93,7 +93,7 @@ body {
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 1132px;
 }
@@ -112,11 +112,12 @@ body {
     justify-content: center;
 }
 .largeSlice{
-    min-height: 450px;
+    min-height: 557px;
     height: auto;
     width: 100%;
     display:flex;
     justify-content: center;
+    
     
 }
 .xLargeSlice{
@@ -145,16 +146,43 @@ body {
 .blue{
     background-color:#040C1A;
 }
+.purple{
+    background-color: #832572;
+}
+
 
 /* Tego Button */
+.serviceContainer{
+    height: 500px;
+    width: 300px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.serviceContainer h3{
+    font-family: 'TitilliumWeb-Black';
+    font-size: 30pt;
+    margin:0;
+    text-align: center;
+    width: 70%;
+    line-height: 30pt;
+}
+.serviceContainer p{
+    font-family: 'TitilliumWeb-SemiBold';
+    text-align: center;
+    margin:0;
+    padding:0 10px;
+    
+}
 .tegoButton{
-    width:300px;
-    height:300px;
+    width:170px;
+    height:170px;
     transition:.4s;
-/*    box-shadow: 10px 10px 25px black;*/
-    background:#23272A;
-    margin: 13px;
-    border-radius: 150px;
+    background:transparent;
+    border-radius: 170px;
+    border: 6px solid white;
 }
 .tegoButtonContent{
     font-size: 1.5em;
@@ -166,25 +194,36 @@ body {
     transition-duration: .4s;
     cursor: pointer;   
 }
-#discordImage {
-    flex:1;
-    display:block;
-    height:100%;
-    background-image: url("images/Discord-Logo-Color.svg");
+#serverImage{
+    background-image: url("images/Server_Logo.svg");
     background-repeat: no-repeat;
-    background-position: 50% 17px;
+    position:relative;
+    top:15px;
+    height: 140px;
+    width: 100%;
+    background-position: 50%;
+    display: block;
+}
+#discordImage {
+    display:block;
+    background-image: url("images/Discord-Logo-White.svg");
+    background-repeat: no-repeat;
+    position:relative;
+    top:15px;
     transition-duration: .4s;
-    background-size: 340px ;
+    height:140px;
+    width: 100%;
+    background-position: 50%;
 }
 #twitchImage {
-    flex:1;
     display:block;
-    height:100%;
-    background-image: url("images/Glitch_Purple_RGB.svg");
+    background-image: url("images/Glitch_White_RGB.svg");
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 240px;
-    transition-duration: .4s;
+    width:100%;
+    height:125px;
+    background-position: 50%;
+    position:relative;
+    top:25px;
 }
 #twitterImage {
     flex:1;
@@ -217,6 +256,7 @@ body {
 #video-background{
     width:100%;
     overflow: hidden;
+    mix-blend-mode: overlay;
 }
 .videoOverlay{
     position: absolute;
@@ -226,7 +266,8 @@ body {
     height: 100%;
     width:100%;
     z-index: 2;
-    background-color: rgba(64,35,101,0.8);
+    background-color: rgba(64,35,101,1);
+    background-blend-mode: multiply;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -266,15 +307,16 @@ body {
     border:2px solid transparent;
 }
 .tegoButton:hover{
-    transform: scale(1.1);
-/*    box-shadow: 10px 10px 5px black;*/
+    transform: scale(1.2);
 }
 .tegoButton:hover .tegoButtonContent{
     opacity: 1;
 }
+/*
 .tegoButton:hover .tegoButtonImage{
     opacity: .1;
 }
+*/
 
 /* Misc. */
 
