@@ -20,7 +20,6 @@ $(window).on('load', function() {
     </head>
     <body class="grey">
         <div>
-            <nav id="background" class="smallSlice"></nav>
             <nav id="navBar" class="smallSlice">
                     <h3 id="alphaBanner">Alpha Version 0.1</h3>
                     <img id="clipped" src="static\images\greybannerimage.jpg">
@@ -56,13 +55,13 @@ $(window).on('load', function() {
                                 </a>
                             </h1>
                         </div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.</p>
+                        <p>TeGo is a platform for gamers to collaborate with other gamers to build the next best thing, or show off their own projects. We also sponsor multiple eSports teams and provide core services to all members.</p>
                     </div>
                     <div data-aos="fade-left" id="loginDiv">
                         <p style="margin-top:10px;">
-                            <strong>Log in instructions here.</strong> I'm not sure what kind of direction people would need, but you never know these days.
+                            <strong>Log in to use Services.</strong> Type in your credentials below. If you forgot your username and password, reach out to an admin.
                         </p>
-                        <form>
+                        <form(method='POST' action='/login')>
                             <label for="username">Username</label>
                             <input type="text" name="username" id="username">
                             <label for="password">Password</label>

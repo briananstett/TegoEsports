@@ -3,7 +3,8 @@ const router = express.Router();
 var bodyParser = require('body-parser');
 var middle = require('../middleware');
 var userModel = require('../models/user');
-
+var request = require('request');
+var appVariables = require('../AppVariables').appVariables;
 /*      Routes for index        */
 router.get('/', function(req, res, next){
     return res.render('index');
@@ -39,16 +40,48 @@ router.get('/docker', middle.requireLogin, middle.getDockerImages, middle.getUse
 
 });
 router.get('/docker/:action', middle.requireLogin, function(req, res, next){
-    console.log("action");
     const action = req.params.action;
-    console.log(action);
-    res.render('/teamMembers');
+    const id = req.query.id;
+    switch(action) {
+        case "stop":
+        console.log("stop");
+            request.post(
+                {
+                uri: appVariables.stopContainerURI(id),
+                }, function(error, response, body){
+                    if (!error && response.statusCode == 204){
+                        console.log("no errors, should redirct")
+                        return res.redirect('/docker');
+                    }
+            });
+            break;
+        case "start":
+            console.log("Start");
+            request.post(
+                {
+                uri: appVariables.startContainerURI(id),
+                }, function(error, response, body){
+                    console.log(response.statusCode);
+                    if (!error && response.statusCode == 204){
+                        console.log("no errors, should redirct")
+                        return res.redirect('/docker');
+                    }
+            });
+            break;
+        case "remove":
+            break;
+        case "restart":
+            break;
+        default:
+            var error = new Error("Unknown action was passed to docker");
+            error.status = 706;
+            return next(error);
+    }
 });
 
 
 
-router.get('/create-container:imageID', function(req, res, next){
-    
+router.get('/create-container', function(req, res, next){
     var newContainer = {
         dateCreated: new Date,
         createdStatus: true,

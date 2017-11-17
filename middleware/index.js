@@ -1,6 +1,6 @@
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
-var keys = Object.keys || require('object-keys');
+// var keys = Object.keys || require('object-keys');
 // var inspectContainerURI = require('../AppVariables').inspectContainerURI;
 var userModel = require('../models/user');
 function requireLogin(req, res, next){
@@ -27,10 +27,10 @@ function getDockerImages(req, res, next){
                 });
             });
             res.locals.dockerImages= filteredImages;
-            next();
+            return next();
         }
         if(error){
-            next(error);
+            return next(error);
         } 
     });
 }
@@ -53,7 +53,6 @@ function getUserContainers(req, res, next){
         var noCallbacks = 0;
         function wait(){
             noCallbacks +=1;
-            console.log(noCallbacks);
             if (noCallbacks == noContainers){
                 res.locals.userContainersDocker = userContainersDocker;
                 res.locals.whaleIP=appVariables.whaleIP;
@@ -81,7 +80,7 @@ function getUserContainers(req, res, next){
                     });
                     console.log(userContainersDocker);
                 }else{
-                    var error = new Error("Error while making docker API call: /v1.24/containers/id/json");
+                    var error = new Error("Error while making docker API call: /v1.32/containers/id/json");
                     error.statusCode = 706;
                     next(error);
                 }

@@ -24,13 +24,13 @@ block content
                                 button.w3-button.w3-black #{container.status}
                                 .w3-dropdown-content.w3-bar-block.w3-border
                                     -if(container.status!=='exited') 
-                                        a.w3-bar-item.w3-button(href='#') Stop 
+                                        a.w3-bar-item.w3-button(href=`/docker/stop?id=${container.Id}`) Stop 
                                     -if(container.status!=='running') 
-                                        a.w3-bar-item.w3-button(href='#') Run
+                                        a.w3-bar-item.w3-button(href=`/docker/start?id=${container.Id}`) Run
                                     -if(container.status!=='removing') 
-                                        a.w3-bar-item.w3-button(href='#') Delete Server
+                                        a.w3-bar-item.w3-button(href=`/docker/remove?id=${container.Id}`) Delete Server
                                     -if(container.status!=='restarting') 
-                                        a.w3-bar-item.w3-button(href='#') Restart Server
+                                        a.w3-bar-item.w3-button(href=`/docker/restart?id=${container.Id}`) Restart Server
 
 
                 tr.tableRow 

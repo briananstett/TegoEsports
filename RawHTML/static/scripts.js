@@ -24,11 +24,11 @@ $( document ).ready(function() {
 //scroll navbar animation
 $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
-        $( "#background" ).fadeIn();
+        $( "#navBar" ).css("background", "#402365");
         $("#tegoImg").css("height","60px");
         $("#tegoImg").css("width","60px");
     } else {
-        $( "#background" ).fadeOut();
+        $( "#navBar" ).css("background", "transparent");
         $("#tegoImg").css("height","100px");
         $("#tegoImg").css("width","100px");
     }
