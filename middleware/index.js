@@ -1,5 +1,6 @@
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
+var keys = Object.keys || require('object-keys');
 // var inspectContainerURI = require('../AppVariables').inspectContainerURI;
 var userModel = require('../models/user');
 function requireLogin(req, res, next){
@@ -36,7 +37,7 @@ function getDockerImages(req, res, next){
 
 //worker function for getUserContainers
 function inspectContainerURI(id){
-    return `http://35.190.142.192:2375/v1.24/containers/${id}/json`;
+    return `http://35.190.142.192:2375/v1.33/containers/${id}/json`;
 }
 function getUserContainers(req, res, next){
     //array to hold the users container information after parsing through the JSON
@@ -55,6 +56,7 @@ function getUserContainers(req, res, next){
             console.log(noCallbacks);
             if (noCallbacks == noContainers){
                 res.locals.userContainersDocker = userContainersDocker;
+                res.locals.whaleIP=appVariables.whaleIP;
                 //only move onto the next middleware function after all requests return
                 next();
             }
@@ -67,11 +69,15 @@ function getUserContainers(req, res, next){
             request(options, function(error, response, body){
                 if (!error && response.statusCode == 200){
                     var parsedJson = JSON.parse(body);
+                    // console.log(parsedJson);
+                    // console.log("ports" + Object.keys(parsedJson.Config.ExposedPorts));
                     userContainersDocker.push({
                         Id: parsedJson.Id,
-                        image: parsedJson.Image,
+                        image: parsedJson.Config.Image,
                         name: parsedJson.Name,
-                        status : parsedJson.State.Status
+                        status : parsedJson.State.Status,
+                        ports : Object.keys(parsedJson.Config.ExposedPorts)
+
                     });
                     console.log(userContainersDocker);
                 }else{

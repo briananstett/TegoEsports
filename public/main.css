@@ -58,7 +58,7 @@ body {
 }
 
 .tableRow:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #999999;
     color:black;
 }
 

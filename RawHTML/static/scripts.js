@@ -25,8 +25,12 @@ $( document ).ready(function() {
 $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
         $( "#background" ).fadeIn();
+        $("#tegoImg").css("height","60px");
+        $("#tegoImg").css("width","60px");
     } else {
         $( "#background" ).fadeOut();
+        $("#tegoImg").css("height","100px");
+        $("#tegoImg").css("width","100px");
     }
 });
 

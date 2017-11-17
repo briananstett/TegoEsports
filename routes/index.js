@@ -27,17 +27,8 @@ router.post('/login', function(req, res, next){
 
 /*      Routes for Team Members       */
 router.get('/team-members', function(req, res, next){
-    req.session.david="David1";
-    userModel.test(function(req,res,next){
-        
-    })
     return res.render('teamMembers', {title: 'Team-Members'});
 });
-
-/*      Routes for register       */
-// router.get('/register', function(req, res, next){
-//     return res.render('teamMembers', {title: 'Team-Members'});
-// });
 
 /*      Routes for docker      */
 router.get('/docker', middle.requireLogin, middle.getDockerImages, middle.getUserContainers, function(req, res, next){
@@ -47,8 +38,17 @@ router.get('/docker', middle.requireLogin, middle.getDockerImages, middle.getUse
     return res.render('docker');
 
 });
+router.get('/docker/:action', middle.requireLogin, function(req, res, next){
+    console.log("action");
+    const action = req.params.action;
+    console.log(action);
+    res.render('/teamMembers');
+});
 
-router.get('/create-container', function(req, res, next){
+
+
+router.get('/create-container:imageID', function(req, res, next){
+    
     var newContainer = {
         dateCreated: new Date,
         createdStatus: true,
