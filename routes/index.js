@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 var bodyParser = require('body-parser');
 var middle = require('../middleware');
-var userModel = require('../models/user');
+var userModel = require('../models/user').user;
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
 /*      Routes for index        */
