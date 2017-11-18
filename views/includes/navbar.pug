@@ -1,20 +1,25 @@
 nav#navBar.smallSlice
-    .menu
-        ul
-        a(href='#')
-            li LINK ONE
-        a(href='#')
-            li LINK TWO
-        a(href='#')
-            li LINK THREE
-        a(href='#')
-            li LINK FOUR
-        a(href='#')
-            li LINK FIVE
-    .flexRow
-        button.hamburger.noselect ☰
-        button.cross.noselect ˟
-        a#navLogo.noselect(href='/') TeGo
-        a.navBarItems(href='/team-members') Team Members
-        a.navBarItems(href='/login') Login
-        a.navBarItems(href='#') Contact
+        h3#alphaBanner Alpha Version 0.1
+        img#clipped(src='static/images/greybannerimage.jpg')
+        .menu
+          ul
+            a(href='#')
+              li Team Members
+            a(href='#')
+              li Services
+            a(href='#')
+              li Statistics
+            a(href='#')
+              li Another Link
+            a(href='#')
+              li Logout
+        .flexRow
+          button.hamburger.noselect ☰
+          button.cross.noselect ˟
+          a#navLogo.noselect(data-aos='fade-right', href='/')
+            img#tegoImg(src='static/images/TEGO_Logo.png')
+          #navBarItemsContainer(data-aos='fade-left')
+            a.navBarItems(href='#') Contact
+            a.navBarItems(href='#') Login
+            a.navBarItems(href='#') Store
+            a.navBarItems(href='#') Team Members

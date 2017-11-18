@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
 //For testing, create connection
@@ -11,7 +12,7 @@ var Containers = new mongoose.Schema({
     startStatus: Boolean,
     Name: String,
     ID: String,
-    exposedPorts: String,
+    exposedPorts: [{type:Schema.Types.ObjectId, ref: 'port'}],
     image: String
 });
 var UserSchema = new mongoose.Schema({
@@ -46,6 +47,11 @@ var UserSchema = new mongoose.Schema({
     },
     containers: [Containers]
 });
+var Port = new mongoose.Schema({
+    available: {type: Number, required: true},
+    portNumber: {type: Number, required: true},
+    container: {type: Schema.Types.ObjectId, ref: 'user.containers'}
+});
 
 //Check passwords
 UserSchema.statics.authenticate = function(username, password, cb){
@@ -71,6 +77,9 @@ UserSchema.statics.authenticate = function(username, password, cb){
             });
         }
     });
+}
+UserSchema.statics.getAvailablePort = function(){
+
 }
 
 UserSchema.statics.createContainer = function(userId, containerObject, cb){
@@ -122,4 +131,6 @@ UserSchema.statics.test = function(cb){
 
 //Schema to model
 var user = mongoose.model('user', UserSchema);
-module.exports = user;
+var port = mongoose.model('port', Port);
+module.exports = {user,port};
+

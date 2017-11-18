@@ -1,6 +1,7 @@
 extends layout
+block headLinks
+    include includes/dockerHead.pug
 block content
-
     .mediumSlice
         .flexRow
             h3 Manager Your Servers
@@ -31,13 +32,16 @@ block content
                                         a.w3-bar-item.w3-button(href=`/docker/remove?id=${container.Id}`) Delete Server
                                     -if(container.status!=='restarting') 
                                         a.w3-bar-item.w3-button(href=`/docker/restart?id=${container.Id}`) Restart Server
-
-
                 tr.tableRow 
-                    td.tableData Minecraft
-                    td.tableData Image
-                    td.tableData Ip Address
-                    td.tableData Status
+                    td.tableData
+                    td.tableData 
+                        .w3-dropdown-hover
+                            button.w3-button.w3-black Images
+                            .w3-dropdown-content.w3-bar-block.w3-border
+                                for image in dockerImages
+                                    a.w3-bar-item.w3-button(href=`/docker/create?imageID=${image.imageTag}`) #{image.imageTag}
+                    td.tableData 
+                    td.tableData 
 
 
         //- if userContainersDocker

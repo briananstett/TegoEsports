@@ -3,6 +3,23 @@
     font-family: 'Sport Regular';
     src: url('fonts/SFSportsNight.ttf') format('truetype');
 }
+@font-face{
+    font-family: 'TitilliumWeb-Black';
+    src: url('fonts/TitilliumWeb-Black.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'TitilliumWeb-Bold';
+    src: url('fonts/TitilliumWeb-Bold.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'TitilliumWeb-Regular';
+    src: url('fonts/TitilliumWeb-Regular.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'TitilliumWeb-SemiBold';
+    src: url('fonts/TitilliumWeb-SemiBold.ttf') format('truetype');
+}
+
 
 
 /* Everyone */
@@ -16,50 +33,51 @@
 body {
     margin:0;
     padding:0;
-    height:100%;
+    align-items: center;
+    
 }
 
 
 /* NavBar */
 #navBar {
-    background:#040C1A;
+    background:transparent;
     opacity:.9;
     position: fixed;
     top: 0;
     z-index: 2000;
+    transition-duration: .6s;
 }
 .navBarItems{
+    font-family: 'TitilliumWeb-Bold';
+    flex-basis: content;
+    font-size: 13pt ;
+    padding: 0 20px;
+    border: 2px solid transparent;
+    transition-duration: .6s;
+    height:100%;
+}
+#teamMembers{
     flex-basis: content;
     font-size: .9em;
-    padding: 0 30px;
-    line-height: 70px;
-    transition-duration: .6s;    
+    padding: 0 20px;
+    line-height: 32px;
+    transition-duration: 1s;
+    height:100%;
+    border: 2px solid white;
+}
+#navBarItemsContainer{
+    height:30px;
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: center
 }
 #navLogo{
-    height:3opx;
-    width:30px;
     margin-right: auto;
+    font-size:40px;
     font-family: 'Sport Regular';
     flex-basis: content;
-
     line-height: 70px;
         
-}
-.table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.tableData, .tableHeader {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-.tableRow:nth-child(even) {
-    background-color: #999999;
-    color:black;
 }
 
 
@@ -68,7 +86,7 @@ body {
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 1132px;
 }
@@ -87,16 +105,19 @@ body {
     justify-content: center;
 }
 .largeSlice{
-    min-height: 450px;
+    min-height: 557px;
     height: auto;
     width: 100%;
     display:flex;
     justify-content: center;
     
+    
 }
 .xLargeSlice{
-    height:643px;
+    height:700px;
     width: 100%;
+    display:flex;
+    justify-content: center;
 }
 .xxLargeSlice{
     height:800px;
@@ -106,8 +127,7 @@ body {
 /* Main image on home page */
 .mainImageSlice{
     /* Image the entire slice  */
-    background: linear-gradient(to top, #020917, transparent ), url('background.png');
-    background-repeat: no-repeat;
+    background: url('../static/images/Header_Image.jpg');
     background-position: center;
     background-size:cover;
 }
@@ -119,15 +139,43 @@ body {
 .blue{
     background-color:#040C1A;
 }
+.purple{
+    background-color: #832572;
+}
+
 
 /* Tego Button */
+.serviceContainer{
+    height: 500px;
+    width: 300px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.serviceContainer h3{
+    font-family: 'TitilliumWeb-Black';
+    font-size: 30pt;
+    margin:0;
+    text-align: center;
+    width: 70%;
+    line-height: 30pt;
+}
+.serviceContainer p{
+    font-family: 'TitilliumWeb-SemiBold';
+    text-align: center;
+    margin:0;
+    padding:0 10px;
+    
+}
 .tegoButton{
-    width:350px;
-    height:350px;
+    width:182px;
+    height:182px;
     transition:.4s;
-    box-shadow: 10px 10px 25px black;
-    background:#23272A;
-    margin: 13px;
+    background:transparent;
+    border-radius: 170px;
+    border: 6px solid white;
 }
 .tegoButtonContent{
     font-size: 1.5em;
@@ -139,25 +187,36 @@ body {
     transition-duration: .4s;
     cursor: pointer;   
 }
-#discordImage {
-    flex:1;
-    display:block;
-    height:100%;
-    background-image: url("images/Discord-Logo-Color.svg");
+#serverImage{
+    background-image: url("images/Server_Logo.svg");
     background-repeat: no-repeat;
-    background-position: 50% 17px;
+    position:relative;
+    top:15px;
+    height: 140px;
+    width: 100%;
+    background-position: 50%;
+    display: block;
+}
+#discordImage {
+    display:block;
+    background-image: url("images/Discord-Logo-White.svg");
+    background-repeat: no-repeat;
+    position:relative;
+    top:15px;
     transition-duration: .4s;
-    background-size: 340px ;
+    height:140px;
+    width: 100%;
+    background-position: 50%;
 }
 #twitchImage {
-    flex:1;
     display:block;
-    height:100%;
-    background-image: url("images/Glitch_Purple_RGB.svg");
+    background-image: url("images/Glitch_White_RGB.svg");
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 240px;
-    transition-duration: .4s;
+    width:100%;
+    height:120px;
+    background-position: 50% ;
+    position:relative;
+    top:28px;
 }
 #twitterImage {
     flex:1;
@@ -190,6 +249,7 @@ body {
 #video-background{
     width:100%;
     overflow: hidden;
+    mix-blend-mode: overlay;
 }
 .videoOverlay{
     position: absolute;
@@ -199,7 +259,8 @@ body {
     height: 100%;
     width:100%;
     z-index: 2;
-    background-color: rgba(2, 9, 23,0.8);
+    background-color: rgba(64,35,101,1);
+    background-blend-mode: multiply;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -226,25 +287,45 @@ body {
     background-color:#020917;
 }
 
+/* Table CSS */
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+.tableData, .tableHeader {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.tableRow:nth-child(even) {
+    background-color: #999999;
+    color:black;
+}
 
 
 
 /* Hover */
 .navBarItems:hover{
-    transition-property: background;
-    background: #4D5D71;
+    transition-property: border;
+    border: 2px solid white;
+}
+.navBarItems:hover ~ #teamMembers{
+    border:2px solid transparent;
 }
 .tegoButton:hover{
-    transform: scale(1.1);
-    box-shadow: 10px 10px 5px black;
+    transform: scale(1.2);
 }
 .tegoButton:hover .tegoButtonContent{
     opacity: 1;
 }
+/*
 .tegoButton:hover .tegoButtonImage{
     opacity: .1;
 }
+*/
 
 /* Misc. */
 
@@ -274,16 +355,40 @@ body {
     margin-bottom: 25px;
 }
 footer{
-    background-color:#040C1A;
-    color:white;
-    margin:auto;
-    width:65%;
-    text-align:center;
-    margin-bottom:2%;
+    position:absolute;
+    bottom:0;
+
 }
 
 #footerLine{
     width: 65%;
+}
+
+
+#clipped{
+    z-index: 99999;
+    position:absolute;
+    top:70;
+    right:0;
+    -webkit-clip-path: polygon(50% 0, 100% 50%, 100% 75%, 25% 0);
+    clip-path: polygon(50% 0, 100% 50%, 100% 75%, 25% 0);    
+}
+
+#alphaBanner{
+
+    z-index: 999999;
+    position:absolute;
+    top:98;
+    right:8;
+
+    /* Safari */  
+    -webkit-transform: rotate(32deg);
+    /* Firefox */
+    -moz-transform: rotate(32deg);
+    /* IE */
+    -ms-transform: rotate(32deg);
+    /* Opera */
+    -o-transform: rotate(32deg);
 }
 
 /*You are now entering the Hamburger Zone*/
@@ -296,7 +401,7 @@ footer{
     padding:5px 15px 0px 15px;
     color:white;
     border:0;
-    font-size:1.8em;
+    font-size:2em;
     font-weight:bold;
     cursor:pointer;
     outline:none;
@@ -312,7 +417,7 @@ footer{
     padding:7px 15px 0px 15px;
     color:white;
     border:0;
-    font-size:3em;
+    font-size:3.8em;
     line-height:65px;
     font-weight:bold;
     cursor:pointer;
@@ -376,4 +481,106 @@ footer{
 .menu, .cross{
     visibility: hidden;
 }
+}
+
+#tegoImg {
+    transition-duration: .6s;
+    position: absolute;
+    top:-30px;
+    width:100px;
+    height:100px;
+}
+
+#loginDiv {
+    width:270px;
+    height: 290;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 10px 10px 25px black;
+}
+#loginDiv form, #loginDiv p{
+    width:80%;
+    margin:0;
+}
+#loginDiv p, #loginDiv a{
+    font-family:'TitilliumWeb-SemiBold';
+    line-height: 12pt;
+    color:#402365;
+    font-size: 13px;
+    text-align: center;
+}
+#loginDiv #notAMember{
+    position:relative;
+    top:-12px;
+}
+#loginDiv strong{
+    font-family:'TitilliumWeb-Bold';
+    color:#402365;
+}
+#loginDiv input, #loginDiv label {
+    font-family:'TitilliumWeb-Bold';
+    color:#402365;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#loginDiv input{
+    font-family:'TitilliumWeb-SemiBold';
+    display: block;
+    width: 100%;
+    height:27px;
+    background-color: #e5e5e5;
+    border:none;
+    border-radius: 15px;
+    outline:0;
+    margin-bottom: 10px;
+    text-indent: 10px;
+}
+#loginDiv input[type=submit]{
+    font-family:'TitilliumWeb-Black';
+    background-color:#402365;
+    border:none;
+    height:40px;
+    border-radius: 20px;
+    color:#ffffff;
+    text-indent: 0;
+    font-size: 16pt;
+    letter-spacing: 1px;
+    cursor:pointer;
+    transition-duration: .6s;
+}
+#loginDiv input[type=submit]:hover{
+    background-color:#832572;
+}
+#headerParagraph{
+    width:550px;
+}
+#headerParagraph p{
+    font-family:  'TitilliumWeb-SemiBold';
+    line-height: 28px;
+    font-size: 25px;
+    text-align: left;
+    margin: 10;
+}
+#weAreDiv{
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: right;
+}
+#weAreDiv h1, .wrap{
+    font-family: 'TitilliumWeb-Black';
+    margin:0;
+    padding-right:20px;
+}
+.wrap{
+    padding:0;
+    margin:0;
+}
+.typewrite{
+    border-bottom: 4px solid white;
 }

@@ -1,15 +1,20 @@
 html
-    head
-        if title
-            title TeGo Esports | #{title}
-        title TeGo Esports
-        link(rel='stylesheet', href='static/main.css')
-        link(href='https://fonts.googleapis.com/css?family=Raleway|Russo+One|Work+Sans', rel='stylesheet')
-        link(href='https://www.w3schools.com/w3css/4/w3.css', rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css?family=Lato', rel='stylesheet')
-        script(src='static/jquery-3.2.1.js')
-        script(src='static/scripts.js')
-    include includes/navbar.pug 
-    body.grey
-        block content
-        include includes/footer.pug
+  head
+    title TeGo eSports
+    block headLinks
+    link(rel='icon', href='static/images/TEGO_Logo_Purple.png')
+    script(src='static/jquery-3.2.1.js')
+    script(src='static/scripts.js')
+    script(src='https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js')
+    script.
+      $(function() {
+      AOS.init();
+      });
+      $(window).on('load', function() {
+      AOS.refresh();
+      });
+  body.grey
+    div
+      include includes/navbar.pug
+      block content
+      include includes/footer.pug

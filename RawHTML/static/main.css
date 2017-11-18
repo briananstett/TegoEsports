@@ -33,7 +33,8 @@
 body {
     margin:0;
     padding:0;
-    height: 2000px;
+    align-items: center;
+    
 }
 
 
@@ -51,7 +52,6 @@ body {
     flex-basis: content;
     font-size: 13pt ;
     padding: 0 20px;
-    line-height: 32px;
     border: 2px solid transparent;
     transition-duration: .6s;
     height:100%;
@@ -339,12 +339,9 @@ body {
     margin-bottom: 25px;
 }
 footer{
-    background-color:#040C1A;
-    color:white;
-    margin:auto;
-    width:65%;
-    text-align:center;
-    margin-bottom:2%;
+    position:absolute;
+    bottom:0;
+
 }
 
 #footerLine{
@@ -527,7 +524,7 @@ footer{
     margin-bottom: 10px;
     text-indent: 10px;
 }
-#loginDiv input[type=button]{
+#loginDiv input[type=submit]{
     font-family:'TitilliumWeb-Black';
     background-color:#402365;
     border:none;
@@ -540,7 +537,7 @@ footer{
     cursor:pointer;
     transition-duration: .6s;
 }
-#loginDiv input[type=button]:hover{
+#loginDiv input[type=submit]:hover{
     background-color:#832572;
 }
 #headerParagraph{
@@ -554,12 +551,14 @@ footer{
     margin: 10;
 }
 #weAreDiv{
+        
     display: flex;
     flex-direction: row;
-    font-size: 30;
     text-align: right;
 }
 #weAreDiv h1, .wrap{
+       font-size: 30px;
+    font-size: 30px;
     font-family: 'TitilliumWeb-Black';
     margin:0;
     padding-right:20px;

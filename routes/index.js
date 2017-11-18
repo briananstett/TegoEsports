@@ -72,6 +72,8 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
             break;
         case "restart":
             break;
+        case "create":
+            break
         default:
             var error = new Error("Unknown action was passed to docker");
             error.status = 706;

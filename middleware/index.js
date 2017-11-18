@@ -1,8 +1,6 @@
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
-// var keys = Object.keys || require('object-keys');
-// var inspectContainerURI = require('../AppVariables').inspectContainerURI;
-var userModel = require('../models/user');
+var userModel = require('../models/user').user;
 function requireLogin(req, res, next){
     if(req.session.userId){
         return next();
@@ -35,10 +33,7 @@ function getDockerImages(req, res, next){
     });
 }
 
-//worker function for getUserContainers
-function inspectContainerURI(id){
-    return `http://35.190.142.192:2375/v1.33/containers/${id}/json`;
-}
+
 function getUserContainers(req, res, next){
     //array to hold the users container information after parsing through the JSON
     var userContainersDocker = [];
@@ -63,7 +58,7 @@ function getUserContainers(req, res, next){
         //loop through all the users containers that were returned from the database
         userContainers.forEach(function(container){
             var options = {
-                url: inspectContainerURI(container.ID)
+                url: appVariables.inspectContainerURI(container.ID)
             }
             request(options, function(error, response, body){
                 if (!error && response.statusCode == 200){

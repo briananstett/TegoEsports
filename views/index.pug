@@ -1,40 +1,67 @@
-extends layout
+extends layout.pug
+block headLinks
+  include includes/indexHead.pug
 block content
-    .xLargeSlice.mainImageSlice
-      // Image defined in CSS
-    .mediumSlice.grey
-      .flexRow
-        h3#services Our Services
-    .largeSlice.grey.margin-bottom
-      #tegoButtonRow.flexRow
+  .xLargeSlice.mainImageSlice
+    .flexRow(style='justify-content: space-around;')
+      #headerParagraph(data-aos='fade-right')
+        #weAreDiv
+          h1 We are
+          h1
+            a.typewrite(href='', data-period='2000', data-type='[ "TEGO", "Gamers", "Developers", "Musicians", "Designers", "Artists", "Engineers" ]')
+              span.wrap
+        p
+          | TeGo is a platform for gamers to collaborate with other gamers to build the next best thing, or show off their own projects. We also sponsor multiple eSports teams and provide core services to all members.
+      #loginDiv(data-aos='fade-left')
+        p(style='margin-top:10px;')
+          strong Log in to use Services.
+          |  Type in your credentials below. If you forgot your username and password, reach out to an admin.
+        form(method='POST', action='/login')
+          label(for='username') Username
+          input#username(type='text', name='username', value='')
+          label(for='password') Password
+          input#password(type='password', name='password')
+          input(type='submit', value='LOGIN')
+        p#notAMember
+          | Not a memeber? 
+          a(style='text-decoration:underline;', href='#') create an account
+  .largeSlice.purple
+    #tegoButtonRow.flexRow(data-aos='fade-up')
+      .serviceContainer
+        .tegoButton
+          a#serverImage.tegoButtonImage(href='#')
+        h3 Servers as a Service
+        p
+          | Looking to host an eSports server? TeGo has you covered! Using Docker we are able to offer free dedicated server hosting for a variety of different games. Follow the link and get gaming!
+      .serviceContainer
         .tegoButton
           a#discordImage.tegoButtonImage(href='#')
-          span.tegoButtonContent Use Discord?
-          span.tegoButtonContent So do we!
+        h3 Join our Discord
+        p
+          | Connect with members of TeGo! We offer a variety of public voice communication channels. With a variety of exciting bots and a friendly community, this is the best Discord on the web!
+      .serviceContainer
         .tegoButton
           a#twitchImage.tegoButtonImage(href='#')
-          span.tegoButtonContent We Stream Too!
-        .tegoButton
-          a#twitterImage.tegoButtonImage(href='#')
-          span.tegoButtonContent Follows Us On Twitter
-          span.tegoButtonContent For TeGo Updates
-    .videoCSS
-      #videoContainer
-        video#video-background(autoplay='', loop='', muted='', plays-inline='')
-          source(src='static/videos/League%20of%20Legends.mp4', type='video/mp4')
-      .videoOverlay
-        #videoOverlayContentContainer
-          a#gameplayLink(href='#')
-            h1.videoOverlayText See Our Gameplay
-    .mediumSlice.grey
-      .flexRow
-        h3#services Improve Your Game
-    .largeSlice.grey.margin-bottom
-      #statsRow.flexRow
-        .tegoButton
-          a#statsImage.tegoButtonImage(href='#')
-          span.tegoButtonContent Start Tracking Your Stats!
-        #statsParagraph
-          h2 Track Your Stats Against Other Members
-          p
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat, tortor sed sodales commodo, neque enim blandit sem, malesuada scelerisque nisi nisl vitae orci. Aliquam eleifend justo vitae elit mattis, ac consectetur tellus sollicitudin. Nunc fermentum ipsum eget nibh pellentesque elementum. Etiam eget lectus vel justo pretium suscipit. Cras sed efficitur sapien, nec aliquet elit. Nulla suscipit ipsum risus, sit amet mollis turpis pulvinar id. Vestibulum finibus orci sed libero cursus venenatis. Integer venenatis massa justo, vel placerat velit vehicula vitae. Donec bibendum libero id tristique efficitur.
+        h3 Watch us Twitch
+        p
+          | Stop by one of the TeGo Organization streams! With a variety of unique TeGo personalities streaming, there is a TeGo stream for everyone! Drop in and see what TeGo is about!
+  .videoCSS
+    #videoContainer
+      video#video-background(autoplay='', loop='', muted='', plays-inline='')
+        source(src='static/videos/League%20of%20Legends.mp4', type='video/mp4')
+    .videoOverlay
+      #videoOverlayContentContainer(data-aos='fade-up')
+        a#gameplayLink(href='#')
+          h1.videoOverlayText See Our Gameplay
+  .mediumSlice.grey
+    .flexRow(data-aos='fade-right')
+      h3#services Improve Your Game
+  .largeSlice.grey
+    #statsRow.flexRow(data-aos='fade-left')
+      .tegoButton
+        a#statsImage.tegoButtonImage(href='#')
+        span.tegoButtonContent Start Tracking Your Stats!
+      #statsParagraph
+        h2 Track Your Stats Against Other Members
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat, tortor sed sodales commodo, neque enim blandit sem, malesuada scelerisque nisi nisl vitae orci. Aliquam eleifend justo vitae elit mattis, ac consectetur tellus sollicitudin. Nunc fermentum ipsum eget nibh pellentesque elementum. Etiam eget lectus vel justo pretium suscipit. Cras sed efficitur sapien, nec aliquet elit. Nulla suscipit ipsum risus, sit amet mollis turpis pulvinar id. Vestibulum finibus orci sed libero cursus venenatis. Integer venenatis massa justo, vel placerat velit vehicula vitae. Donec bibendum libero id tristique efficitur.

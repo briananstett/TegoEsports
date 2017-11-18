@@ -18,7 +18,7 @@ $(window).on('load', function() {
 });
         </script>
     </head>
-    <body class="grey">
+    <body>
         <div>
             <nav id="navBar" class="smallSlice">
                     <h3 id="alphaBanner">Alpha Version 0.1</h3>
@@ -61,12 +61,12 @@ $(window).on('load', function() {
                         <p style="margin-top:10px;">
                             <strong>Log in to use Services.</strong> Type in your credentials below. If you forgot your username and password, reach out to an admin.
                         </p>
-                        <form(method='POST' action='/login')>
+                        <form method='POST' action='/login'>
                             <label for="username">Username</label>
                             <input type="text" name="username" id="username">
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password">
-                            <input type="button" value="LOGIN">
+                            <input type="submit" value="LOGIN">
                         </form>
                         <p id="notAMember">Not a memeber? <a style="text-decoration:underline;" href="#">create an account</a></p>
                         
@@ -80,7 +80,7 @@ $(window).on('load', function() {
                             <a id="serverImage" class="tegoButtonImage" href=#></a>
                         </div>
                         <h3>Servers as a Service</h3>
-                        <p>Looking to host an eSports server? TeGo has you covered! Using Docker we are able to offer free dedicated server hosting for a variety of different games. Follow the link and get gaming! </p>
+                        <p>Looking to host an eSports server? TeGo has you covered! Using Docker we are able to offer free dedicated server hosting for a variety of different games. Follow the link and get gaming!</p>
                     </div>
                     <div class="serviceContainer">
                         <div class="tegoButton">
@@ -117,7 +117,7 @@ $(window).on('load', function() {
                     <h3 id="services">Improve Your Game</h3>
                 </div>
             </div>
-            <div class="largeSlice grey margin-bottom">
+            <div class="largeSlice grey">
                 <div data-aos="fade-left" class="flexRow" id="statsRow">
                     <div class="tegoButton">
                         <a id="statsImage" class="tegoButtonImage" href=#></a>
@@ -129,7 +129,7 @@ $(window).on('load', function() {
                 </div>
                 </div>
             </div>
-            <div class="smallSlice blue">
+            <div class="smallSlice blue footer">
                     <p>Created 2017, TeGo Enterprises</p>
             </div>
         </div>
