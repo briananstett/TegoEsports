@@ -92,6 +92,13 @@ body {
 }
 
 /* Slices */
+.footerSlice{
+    height: 270px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    background-color: #6f1f63
+}
 .smallSlice{
     height: 70px;
     width: 100%;
@@ -99,7 +106,7 @@ body {
     justify-content: center;
 }
 .mediumSlice{
-    height:125px;
+    height:490px;
     width: 100%;
     display:flex;
     justify-content: center;
@@ -130,6 +137,10 @@ body {
     background: url('../static/images/Header_Image.jpg');
     background-position: center;
     background-size:cover;
+}
+.marioImage{
+    background-color: #832572;
+    overflow: hidden;
 }
 
 /* Slice Colors */
@@ -249,7 +260,6 @@ body {
 #video-background{
     width:100%;
     overflow: hidden;
-    mix-blend-mode: overlay;
 }
 .videoOverlay{
     position: absolute;
@@ -259,8 +269,6 @@ body {
     height: 100%;
     width:100%;
     z-index: 2;
-    background-color: rgba(64,35,101,1);
-    background-blend-mode: multiply;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -271,22 +279,39 @@ body {
     display: inline-block;       
 }
 #videoOverlayContentContainer {
-    border: 3px solid #171C25;
+    border: 3px solid #ffffff;
 }
 .videoOverlayText {
     margin:0;
     font-size: 3em;
     color:white;
-    font-family: "work sans";
-    width:500px;
-    line-height: 100px;
+    font-family: "TitilliumWeb-Black";
+    width:300px;
+    line-height: 80px;
     transition-duration: .6s;
 }
 
 .videoOverlayText:hover, #gameplayLink{
-    background-color:#020917;
+    background-color:#6536a0;
 }
 
+/* Table CSS */
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableData, .tableHeader {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.tableRow:nth-child(even) {
+    background-color: #999999;
+    color:black;
+}
 
 
 
@@ -337,11 +362,6 @@ body {
 }
 .margin-bottom{
     margin-bottom: 25px;
-}
-footer{
-    position:absolute;
-    bottom:0;
-
 }
 
 #footerLine{
@@ -557,8 +577,7 @@ footer{
     text-align: right;
 }
 #weAreDiv h1, .wrap{
-       font-size: 30px;
-    font-size: 30px;
+    font-size: 60px;
     font-family: 'TitilliumWeb-Black';
     margin:0;
     padding-right:20px;
@@ -569,4 +588,24 @@ footer{
 }
 .typewrite{
     border-bottom: 4px solid white;
+}
+
+/*Footer*/
+.footerContainer{
+    height: 200px;
+    width: 200px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+.footerContainer h3{
+    font-family: "TitilliumWeb-Black";
+    border-bottom: 2px solid white;
+}
+.footerContainer a{
+    font-size: 11pt;
+    font-size: 11pt;
+    font-family: "TitilliumWeb-Bold"
 }
