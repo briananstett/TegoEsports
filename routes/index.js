@@ -31,6 +31,10 @@ router.get('/team-members', function(req, res, next){
     return res.render('teamMembers', {title: 'Team-Members'});
 });
 
+router.get('/servers-as-a-service', function(req, res, next){
+    return res.render('servers', {title: 'Servers as a Service'});
+})
+
 /*      Routes for docker      */
 router.get('/docker', middle.requireLogin, middle.getDockerImages, middle.getUserContainers, function(req, res, next){
     console.log("in docker route");

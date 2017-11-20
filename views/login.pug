@@ -1,6 +1,7 @@
 extends layout
+block headLinks
+  include includes/indexHead.pug
 block content
-
     .largeSlice.grey.margin-bottom
         #tegoButtonRow.flexRow
             form(method='POST' action='/login')

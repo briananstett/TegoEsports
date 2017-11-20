@@ -1,6 +1,12 @@
 extends layout
+block headLinks
+  include includes/indexHead.pug
 block content
-
-    .largeSlice.grey.margin-bottom
-        #tegoButtonRow.flexRow
-            p Team Members
+ div(style='width: 100%;display:flex;justify-content:center;')
+        div(style='height:700px;')
+            .flexRow(style='height:100%;')
+                div
+                    h1(style='display:block;') Team Members
+                    img(src='static/images/brian_anstett.png', style="height: 300px;width:300px")
+                    h3 "Brian Anstett"
+                    p Backend/Frontend Development, systems engineer

@@ -3,7 +3,7 @@ block headLinks
   include includes/indexHead.pug
 block content
   .xLargeSlice.mainImageSlice
-    .flexRow(style='justify-content: space-around;')
+    .flexRow
       #headerParagraph(data-aos='fade-right')
         #weAreDiv
           h1 We are
@@ -29,7 +29,7 @@ block content
     #tegoButtonRow.flexRow(data-aos='fade-up')
       .serviceContainer
         .tegoButton
-          a#serverImage.tegoButtonImage(href='#')
+          a#serverImage.tegoButtonImage(href='/servers-as-a-service')
         h3 Servers as a Service
         p
           | Looking to host an eSports server? TeGo has you covered! Using Docker we are able to offer free dedicated server hosting for a variety of different games. Follow the link and get gaming!
