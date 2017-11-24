@@ -1,10 +1,10 @@
-var user = require('./models/user');
+var user = require('./models/user').user;
 var bcrypt = require('bcrypt');
 
 var newAdd = {
-    email :" baanstet.oakland.edu",
-    username: "shamshock",
-    alias: "Brian Anstett",
+    email :" test@oakland.edu",
+    username: "test",
+    alias: "Tester Test",
     password: "password",
 }
 
@@ -25,13 +25,3 @@ bcrypt.hash(newAdd.password, 10, function(error, hash){
 });
         }
     });
-
-// user.create(newAdd, function(error, user){
-//     if(error){
-//         console.error(error);
-//         return 0
-//     }else{
-//         console.dir(user);
-//         return 0
-//     }
-// });

@@ -3,6 +3,8 @@ const router = express.Router();
 var bodyParser = require('body-parser');
 var middle = require('../middleware');
 var userModel = require('../models/user').user;
+var portModel = require('../models/user').port;
+var create = require('../containers').create;
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
 /*      Routes for index        */
@@ -49,6 +51,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
     switch(action) {
         case "stop":
         console.log("stop");
+        const id = req.query.id;
             request.post(
                 {
                 uri: appVariables.stopContainerURI(id),
@@ -61,9 +64,10 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
             break;
         case "start":
             console.log("Start");
+            const id = req.query.id;
             request.post(
                 {
-                uri: appVariables.startContainerURI(id),
+                uri: appVariables.startContainerURI(id)
                 }, function(error, response, body){
                     console.log(response.statusCode);
                     if (!error && response.statusCode == 204){
@@ -77,6 +81,29 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
         case "restart":
             break;
         case "create":
+            const imageID = req.query.imageID;
+            portModel.getAvailablePort(function(error, port){
+                if(error){
+                    return next(error);
+                }
+                console.log("available port =" + port.portNumber);
+                console.log(create.minecraft(port.portNumber));
+                console.log(appVariables.createContainerURI);
+                request.post(
+                    {
+                    uri: appVariables.createContainerURI,
+                    headers: {
+                        "Content-Type": "application/json"
+                     },
+                     body: create.minecraft(port.portNumber)
+                    }, function(error, response, body){
+                        console.log(response.statusCode);
+                        if (!error && response.statusCode == 201){
+                            console.log("Container created, next step, start container")
+                        }
+                });
+
+            });
             break
         default:
             var error = new Error("Unknown action was passed to docker");
@@ -88,16 +115,14 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
 
 
 router.get('/create-container', function(req, res, next){
-    var newContainer = {
+    var containerSubdocumnet = {
         dateCreated: new Date,
-        createdStatus: true,
-        startStatus: true,
         Name: "/mc",
         ID: "7a0f380ec3081b036f22da65b6cb7e5bbfb5635b8878ed3d7cb5ddd792385757",
         exposedPorts: "",
         image: "itzg/minecraft-server"
     };    
-    userModel.createContainer(req.session.userId,newContainer, function(error, updatedUser){
+    userModel.createContainer(req.session.userId,containerSubdocumnet, function(error, updatedUser){
         if(error){
             return next(error)
         }else{

@@ -6,6 +6,7 @@
     "704": "Error while updating user",
     "705": "No results for that userId",
     "706": "Error while making docker API call: /v1.24/containers/id/json",
-    "706": "Unknown action was passed to docker"
+    "706": "Unknown action was passed to docker",
+    "707": "No available ports on The Whale"
     
 }

@@ -8,8 +8,6 @@ var bcrypt = require('bcrypt');
 //new schema
 var Containers = new mongoose.Schema({
     dateCreated: Date,
-    createdStatus: Boolean,
-    startStatus: Boolean,
     Name: String,
     ID: String,
     exposedPorts: [{type:Schema.Types.ObjectId, ref: 'port'}],
@@ -48,7 +46,7 @@ var UserSchema = new mongoose.Schema({
     containers: [Containers]
 });
 var Port = new mongoose.Schema({
-    available: {type: Number, required: true},
+    available: {type: Boolean, required: true},
     portNumber: {type: Number, required: true},
     container: {type: Schema.Types.ObjectId, ref: 'user.containers'}
 });
@@ -78,10 +76,19 @@ UserSchema.statics.authenticate = function(username, password, cb){
         }
     });
 }
-UserSchema.statics.getAvailablePort = function(){
-
+Port.statics.getAvailablePort = function(cb){
+    this.findOne({"available":true}, function(error, port){
+        if(error){
+            cb(error);
+        }else if(!port){
+            var error = new Error("No available ports on The Whale");
+            error.status= 707;
+            cb(error);
+        }
+        else
+        cb(null, port);
+    });
 }
-
 UserSchema.statics.createContainer = function(userId, containerObject, cb){
     console.log("model, setContainer method");
     this.findById(userId, function(error, user){
