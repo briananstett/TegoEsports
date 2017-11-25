@@ -1,8 +1,10 @@
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
 var userModel = require('../models/user').user;
+var parseInspectJSON = require('../containers').parseInspectJSON;
 function requireLogin(req, res, next){
     if(req.session.userId){
+        console.log("You have been Authenticated");
         return next();
     }else{
         var error = new Error("You Must Be Logged In");
@@ -25,6 +27,7 @@ function getDockerImages(req, res, next){
                 });
             });
             res.locals.dockerImages= filteredImages;
+            console.log("images, next");
             return next();
         }
         if(error){
@@ -55,33 +58,36 @@ function getUserContainers(req, res, next){
                 next();
             }
         }
+        if(userContainers.length >0){
         //loop through all the users containers that were returned from the database
-        userContainers.forEach(function(container){
-            var options = {
-                url: appVariables.inspectContainerURI(container.ID)
-            }
-            request(options, function(error, response, body){
-                if (!error && response.statusCode == 200){
-                    var parsedJson = JSON.parse(body);
-                    // console.log(parsedJson);
-                    // console.log("ports" + Object.keys(parsedJson.Config.ExposedPorts));
-                    userContainersDocker.push({
-                        Id: parsedJson.Id,
-                        image: parsedJson.Config.Image,
-                        name: parsedJson.Name,
-                        status : parsedJson.State.Status,
-                        ports : Object.keys(parsedJson.Config.ExposedPorts)
-
-                    });
-                    console.log(userContainersDocker);
-                }else{
-                    var error = new Error("Error while making docker API call: /v1.32/containers/id/json");
-                    error.statusCode = 706;
-                    next(error);
+            userContainers.forEach(function(container){
+                var options = {
+                    url: appVariables.inspectContainerURI(container.ID)
                 }
-                wait();
+                request(options, function(error, response, body){
+                    if (!error && response.statusCode == 200){
+                        var parsedJson = JSON.parse(body);
+                        userContainersDocker.push({
+                            Id: parsedJson.Id,
+                            image: parsedJson.Config.Image,
+                            name: parsedJson.Name,
+                            status : parsedJson.State.Status,
+                            ports : parseInspectJSON(parsedJson.Config.Image,parsedJson.HostConfig.PortBindings)
+
+                        });
+                        console.log(userContainersDocker);
+                    }else{
+                        var error = new Error("Error while making docker API call: /v1.32/containers/id/json");
+                        error.statusCode = 706;
+                        next(error);
+                    }
+                    wait();
+                });
             });
-        });
+        }else{
+            console.log("Did it work?");
+            next();
+        }
     });
 }
 

@@ -13,37 +13,32 @@ block content
                     th.tableHeader Image
                     th.tableHeader IP Address
                     th.tableHeader Status
-                for container in userContainersDocker
-                    tr.tableRow
-                        td.tableData #{container.name}
-                        td.tableData #{container.image}
-                        td.tableData #{whaleIP}
-                            for port in container.ports
-                                span #{port}
+                if userContainersDocker
+                    for container in userContainersDocker
+                        tr.tableRow
+                            td.tableData #{container.name}
+                            td.tableData #{container.image}
+                            td.tableData #{whaleIP}:#{container.ports}
+                            td.tableData 
+                                .w3-dropdown-hover
+                                    button.w3-button.w3-black #{container.status}
+                                    .w3-dropdown-content.w3-bar-block.w3-border
+                                        -if(container.status!=='exited') 
+                                            a.w3-bar-item.w3-button(href=`/docker/stop?id=${container.Id}`) Stop 
+                                        -if(container.status!=='running') 
+                                            a.w3-bar-item.w3-button(href=`/docker/start?id=${container.Id}`) Run
+                                        -if(container.status!=='removing') 
+                                            a.w3-bar-item.w3-button(href=`/docker/remove?id=${container.Id}`) Delete Server
+                                        -if(container.status!=='restarting') 
+                                            a.w3-bar-item.w3-button(href=`/docker/restart?id=${container.Id}`) Restart Server
+                if dockerImages
+                    tr.tableRow 
+                        td.tableData
                         td.tableData 
                             .w3-dropdown-hover
-                                button.w3-button.w3-black #{container.status}
+                                button.w3-button.w3-black Images
                                 .w3-dropdown-content.w3-bar-block.w3-border
-                                    -if(container.status!=='exited') 
-                                        a.w3-bar-item.w3-button(href=`/docker/stop?id=${container.Id}`) Stop 
-                                    -if(container.status!=='running') 
-                                        a.w3-bar-item.w3-button(href=`/docker/start?id=${container.Id}`) Run
-                                    -if(container.status!=='removing') 
-                                        a.w3-bar-item.w3-button(href=`/docker/remove?id=${container.Id}`) Delete Server
-                                    -if(container.status!=='restarting') 
-                                        a.w3-bar-item.w3-button(href=`/docker/restart?id=${container.Id}`) Restart Server
-                tr.tableRow 
-                    td.tableData
-                    td.tableData 
-                        .w3-dropdown-hover
-                            button.w3-button.w3-black Images
-                            .w3-dropdown-content.w3-bar-block.w3-border
-                                for image in dockerImages
-                                    a.w3-bar-item.w3-button(href=`/docker/create?imageID=${image.imageTag}`) #{image.imageTag}
-                    td.tableData 
-                    td.tableData 
-
-
-        //- if userContainersDocker
-        //-     for container in userContainersDocker
-        //-         p=container.Id
+                                    for image in dockerImages
+                                        a.w3-bar-item.w3-button(href=`/docker/create?imageID=${image.imageTag}`) #{image.imageTag}
+                        td.tableData 
+                        td.tableData 

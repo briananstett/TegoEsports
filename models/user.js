@@ -101,7 +101,7 @@ UserSchema.statics.createContainer = function(userId, containerObject, cb){
             user.containers.push(containerObject);
             user.save(function(error, updatedUser){
                 if(error){
-                    var error = new error("failed User update");
+                    var error = new Error("failed User update");
                     error.status = 704;
                     return cb(error);
                 }else{

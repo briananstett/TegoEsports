@@ -7,6 +7,12 @@ var appVariables={
     startContainerURI: function(id){
         return `http://35.190.142.192:2375/v1.32/containers/${id}/start`;
     },
+    restartContainerURI: function(id){
+        return `http://35.190.142.192:2375/v1.32/containers/${id}/restart?t=3`;
+    },
+    removeContainerURI: function(id){
+        return `http://35.190.142.192:2375/v1.32/containers/${id}?v=true&force=true`;
+    },
     inspectContainerURI : function(id){
         return `http://35.190.142.192:2375/v1.32/containers/${id}/json`
     },
