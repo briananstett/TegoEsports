@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 //For testing, create connection
 //mongoose.connect('mongodb://localhost/TeGoEsports');
@@ -10,7 +11,8 @@ var Containers = new mongoose.Schema({
     dateCreated: Date,
     Name: String,
     ID: String,
-    exposedPorts: [{type:Schema.Types.ObjectId, ref: 'port'}],
+    User:{type:Schema.Types.ObjectId, ref: 'user'},
+    exposedPort: {type:Schema.Types.ObjectId, ref: 'port'},
     image: String
 });
 var UserSchema = new mongoose.Schema({
@@ -43,7 +45,7 @@ var UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    containers: [Containers]
+    containers: [{type:Schema.Types.ObjectId, ref: 'container'}]
 });
 var Port = new mongoose.Schema({
     available: {type: Boolean, required: true},
@@ -53,7 +55,6 @@ var Port = new mongoose.Schema({
 
 //Check passwords
 UserSchema.statics.authenticate = function(username, password, cb){
-    console.log("authenticate");
     //first find the user, if there is one
     this.findOne({username:username}, function(error, user){
         if(error){
@@ -89,49 +90,71 @@ Port.statics.getAvailablePort = function(cb){
         cb(null, port);
     });
 }
-UserSchema.statics.createContainer = function(userId, containerObject, cb){
-    console.log("model, setContainer method");
-    this.findById(userId, function(error, user){
+Containers.statics.createContainer = function(containerObject, cb){
+    this.create(containerObject, function(error, container){
         if(error){
             return cb(error);
-        }else if(!user){
-            var error = new Error("No results for that userId");
-            error.status = 705;     
         }else{
-            user.containers.push(containerObject);
-            user.save(function(error, updatedUser){
-                if(error){
-                    var error = new Error("failed User update");
-                    error.status = 704;
-                    return cb(error);
-                }else{
-                    return cb(null, updatedUser);
-                }
+            user.findById(container.User, function(error, user){
+                user.containers.push(container._id);
+                user.save(function(error, updatedUser){
+                    if(error){
+                        console.log("error while saving");
+                        return cb(error);
+                    }
+                });
             });
-
+            port.findByIdAndUpdate(container.exposedPort,{$set : {'available': false, 
+            'container': container._id}}, function(error, updatedPort){
+                if(error){console.log("There was an while updating port")}
+            });
         }
     });
 }
-UserSchema.statics.getContainers = function(userId,cb){
-    this.findOne({_id: userId},{containers: true}).lean().exec(function(error, containers){
+Containers.statics.deleteContainer = function(containerID, cb){
+    this.findOne({'ID': containerID},function(error, foundContainer){
+        if(error){
+            return cb(error);
+        }
+        foundContainer.remove();
+        user.update({_id:foundContainer.User}, {$pull : {containers: new ObjectId(foundContainer._id)}}, function(error, updatedUser){
+            if(!error){
+            }else{
+                console.log("there was an error");
+                return cb(error);
+            }
+        })
+
+        port.findById(foundContainer.exposedPort,function(error, foundPort){
+                if (error){
+                    return cb(error);
+                }else{
+                    foundPort.available=true;
+                    foundPort.container=null;
+                    foundPort.save();
+                    
+                }
+            });
+        return cb()
+    });
+}
+Containers.statics.getContainers = function(userId,cb){
+    this.find({'User': userId}, function(error, containers){
         if(error){
             var error = new Error("Error while finding container");
             error.status = 703;
             return cb(error);
         }else if(containers){
-            return cb(null, containers.containers);
+            return cb(null, containers);
         }else{
             var error = new Error("No matches found");
             error.startStatus = 705;
             return cb(error);
         }
-    })
-    
-              
+    });              
 }
 
 UserSchema.statics.test = function(cb){
-    console.log("callback");
     return cb();
 }
 
@@ -139,5 +162,6 @@ UserSchema.statics.test = function(cb){
 //Schema to model
 var user = mongoose.model('user', UserSchema);
 var port = mongoose.model('port', Port);
-module.exports = {user,port};
+var container = mongoose.model('container', Containers);
+module.exports = {user,port,container};
 

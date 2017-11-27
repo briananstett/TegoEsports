@@ -1,11 +1,11 @@
-var user = require('./models/user').user;
+var user = require('../models/user').user;
 var bcrypt = require('bcrypt');
 
 var newAdd = {
-    email :"baanstet@oakland.edu",
-    username: "shamshock",
-    alias: "Brian Anstett",
-    password: "password",
+    email :"fredericks@oakland.edu",
+    username: "CSI3660",
+    alias: "Dr. Eric Frederick",
+    password: "CSI3660",
 }
 
 //hash and salt password

@@ -1,28 +1,3 @@
-// const create = {
-//     minecraft : function(exposedPort){
-//         return `{
-//         "Image": "itzg/minecraft-server",
-//         "Env": [
-//             "EULA=TRUE"
-//         ],
-//         "ExposedPorts": {
-//         "25565/tcp": { }
-//         },
-//         "HostConfig": {
-//             "PortBindings": {
-//                 "25565/tcp": [
-//                     {
-//                     "HostPort": "${exposedPort}"
-//                     }
-//                 ]
-//             }
-        
-//         }}`
-        
-//     }
-// }
-
-
 
 //creates the JSON object used to the container
 //Dynamically generated based on the differnet images

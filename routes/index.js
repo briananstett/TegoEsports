@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var middle = require('../middleware');
 var userModel = require('../models/user').user;
 var portModel = require('../models/user').port;
+var containerModel = require('../models/user').container;
 var createContainerJSON = require('../containers').create;
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
@@ -33,14 +34,15 @@ router.get('/team-members', function(req, res, next){
 });
 
 router.get('/servers-as-a-service', function(req, res, next){
-    return res.render('servers', {title: 'Servers as a Service'});
+    if(req.session.userId){
+        res.redirect('/docker');
+    }else{
+        return res.render('servers', {title: 'Servers as a Service'});    
+    }
 })
 
 /*      Routes for docker      */
 router.get('/docker', middle.requireLogin, middle.getDockerImages, middle.getUserContainers, function(req, res, next){
-    console.log("in docker route");
-    console.log(res.locals.dockerImages);
-    console.log(res.locals.userContainersDocker);
     return res.render('docker');
 
 });
@@ -50,7 +52,6 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
     const imageID = req.query.imageID;
     switch(action) {
         case "stop":
-        console.log("stop");
             request.post(
                 {
                 uri: appVariables.stopContainerURI(id),
@@ -62,14 +63,11 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
             });
             break;
         case "start":
-            console.log("Start");
             request.post(
                 {
                 uri: appVariables.startContainerURI(id)
                 }, function(error, response, body){
-                    console.log(response.statusCode);
                     if (!error && response.statusCode == 204){
-                        console.log("no errors, should redirct")
                         return res.redirect('/docker');
                     }else{
                         var parsedBody = JSON.parse(body);
@@ -83,10 +81,14 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                 uri:appVariables.removeContainerURI(id)
             },function(error, response, body){
                 if(!error && response.statusCode == 204){
-                    //remove container from user's subdocuments
-                    return res.redirect('/docker');    
+                    containerModel.deleteContainer(id, function(error){
+                        if(error){
+                            next(error)
+                        }else{
+                            return res.redirect('/docker');   
+                        }
+                    }) 
                 }else{
-                    console.log("error while deleting");
                 }
             });
             break;
@@ -95,9 +97,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
             {
             uri: appVariables.restartContainerURI(id)
             }, function(error, response, body){
-                console.log(response.statusCode);
                 if (!error && response.statusCode == 204){
-                    console.log("no errors, should redirct")
                     return res.redirect('/docker');
                 }else{
                     var parsedBody = JSON.parse(body);
@@ -107,12 +107,10 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
         });
             break;
         case "create":
-            console.log(imageID);
             portModel.getAvailablePort(function(error, port){
                 if(error){
                     return next(error);
                 };
-                console.log(createContainerJSON(imageID, port.portNumber));
                 request.post(
                     {
                     uri: appVariables.createContainerURI,
@@ -121,17 +119,14 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                      },
                      body: createContainerJSON(imageID, port.portNumber)
                     }, function(error, response, body){
-                        console.log(response.statusCode);
                         if (!error && response.statusCode == 201){
-                            console.log("Container created, next step, start container");
                             var parsedJson = JSON.parse(body);
-                            port.available = false;
-                            port.save();
-                            userModel.createContainer(req.session.userId,{
+                            containerModel.createContainer({
                                 dateCreated: new Date,
                                 Name: null,
                                 ID: parsedJson.Id,
-                                exposedPorts: port._id,
+                                User: req.session.userId,
+                                exposedPort: port._id,
                                 image: imageID    
                             }, function(error, updatedUser){
                                 if(error){
@@ -161,47 +156,5 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
             return next(error);
     }
 });
-
-
-
-router.get('/create-container', function(req, res, next){
-    portModel.getAvailablePort(function(error, port){
-        if(error){console.error(error);}
-        var containerSubdocumnet = {
-            dateCreated: new Date,
-            Name: "/mc",
-            ID: "7a0f380ec3081b036f22da65b6cb7e5bbfb5635b8878ed3d7cb5ddd792385757",
-            exposedPorts: port._id,
-            image: "itzg/minecraft-server"
-        };
-        console.log(containerSubdocumnet);  
-        userModel.createContainer(req.session.userId,containerSubdocumnet, function(error, updatedUser){
-            if(error){
-                return next(error)
-            }else{
-                return res.redirect('/docker');
-            }
-        });  
-    })
-    
-    // var containerSubdocumnet = {
-    //     dateCreated: new Date,
-    //     Name: "test",
-    //     ID: "5c5a8a4bd95a605b90de92bced64795983bd30dd791a84139be8db8f10a0fc48",
-    //     exposedPorts: '5a186980b3abaa005065a69e',
-    //     image: "itzg/minecraft-server"
-    // };    
-    // userModel.createContainer(req.session.userId,containerSubdocumnet, function(error, updatedUser){
-    //     if(error){
-    //         return next(error)
-    //     }else{
-    //         return res.redirect('/docker');
-    //     }
-    // });
-
-});
-
-
-
 module.exports =router;
 

@@ -1,8 +1,8 @@
-var port = require('./models/user').port;
+var port = require('../models/user').port;
 
 var newAdd = {
-    available: false,
-    portNumber: 35566,
+    available: true,
+    portNumber: 25568,
     container: null
 }
 

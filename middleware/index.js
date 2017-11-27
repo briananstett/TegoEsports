@@ -1,6 +1,7 @@
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
 var userModel = require('../models/user').user;
+var containerModel = require('../models/user').container;
 var parseInspectJSON = require('../containers').parseInspectJSON;
 function requireLogin(req, res, next){
     if(req.session.userId){
@@ -27,7 +28,6 @@ function getDockerImages(req, res, next){
                 });
             });
             res.locals.dockerImages= filteredImages;
-            console.log("images, next");
             return next();
         }
         if(error){
@@ -41,7 +41,7 @@ function getUserContainers(req, res, next){
     //array to hold the users container information after parsing through the JSON
     var userContainersDocker = [];
     //Get the container ID's for all the user's containers
-    userModel.getContainers(req.session.userId,function(error, userContainers){
+    containerModel.getContainers(req.session.userId,function(error, userContainers){
         if(error){
             //catch any errors from the model static function
             next(error);
@@ -75,7 +75,6 @@ function getUserContainers(req, res, next){
                             ports : parseInspectJSON(parsedJson.Config.Image,parsedJson.HostConfig.PortBindings)
 
                         });
-                        console.log(userContainersDocker);
                     }else{
                         var error = new Error("Error while making docker API call: /v1.32/containers/id/json");
                         error.statusCode = 706;
@@ -85,7 +84,6 @@ function getUserContainers(req, res, next){
                 });
             });
         }else{
-            console.log("Did it work?");
             next();
         }
     });

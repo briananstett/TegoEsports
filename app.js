@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
@@ -21,6 +22,7 @@ app.use(session({
   })
 
 }))
+app.use(compression());
 
 app.use('/static', express.static(__dirname + '/public'));
 //Let all views have access to session id
