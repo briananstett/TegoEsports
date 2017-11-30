@@ -27,12 +27,10 @@ function createContainerJSON(image, exposedPort){
 
 }
 function imageToPicture(containerImage){
-    console.log("here");
     switch(containerImage) {
         //create JSON for minecraft
         case "itzg/minecraft-server:latest":
         case "itzg/minecraft-server":
-            console.log('got it');
             return 'static/images/minecraft.png'
     }    
 }

@@ -3,6 +3,11 @@ html
         title TeGo eSports
         link(rel='stylesheet', href='static/saas.css')
         link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet')
+        link(rel='shortcut icon', href='static/images/TEGO_Logo_Purple.png')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(type='text/javascript', src='static/saas.js')
+
+    
     body
         nav.srv_nav
             a.srv_nav_items(href='/')
@@ -33,37 +38,50 @@ html
                         a(href='#')
                             img#add(src='static/images/add.svg')
             .srv_content_table_container.srv_content_flexRow
-                table#srv_content_table
-                    colgroup
-                        col(width='100')
-                        col(width='40')
-                        col(width='80')
-                        col(width='80')
-                        col(width='20')
-                    tr
-                        th Server
-                        th Image
-                        th IP Address
-                        th Status
-                        th
-                    if userContainersDocker
-                        for container in userContainersDocker
-                            tr
-                                td #{container.name}
-                                td
-                                    img#srv_image_picture(src=`${container.image}`)
-                                td #{whaleIP}:#{container.ports}
-                                -if(container.status=='running') 
-                                    td
-                                        #srv_status_circle.green
-                                        span.spangreen Running
-                                -if(container.status=='exited') 
-                                    td
-                                        #srv_status_circle.red
-                                        span.spanred Stopped
-                                td
-                                    span
-                                        img#dots(src='static/images/dots.svg')
+                .srv_table_header_flexRow
+                    h3.srv_optionHeader_items.flex4(style='width:50px;') Server
+                    h3.srv_optionHeader_items.flex2 Image
+                    h3.srv_optionHeader_items.flex6 IP Address
+                    h3.srv_optionHeader_items.flex4 Status
+                    .flex1
+                if userContainersDocker
+                    for container in userContainersDocker
+                        .srv_option_row_flexRow
+                            .srv_option_row_item.flex4 #{container.name}
+                            .srv_option_row_item.flex2
+                                img#srv_image_picture(src=`${container.image}`)
+                            .srv_option_row_item.flex6 #{whaleIP}:#{container.ports}
+                            -if(container.status=='running')
+                                .srv_option_row_item.flex4 
+                                    #srv_status_circle.green
+                                    span.spangreen Running
+                            -if(container.status=='exited')  
+                                .srv_option_row_item.flex4 
+                                    #srv_status_circle.red
+                                    span.spanred Stopped
+                            .flex1
+                                img#dots(src='static/images/dots.svg')
+                        .srv_option_row_dropdown
+                            div(style='display:flex; flex-direction: column;')
+                                #srv_dropdown_status_row
+                                    h3 Status:
+                                    -if(container.status!=='running')
+                                        a.green(href=`/docker/start?id=${container.Id}`)
+                                            img.srv_drop_StatusImage(src='static/images/play.svg')
+                                            | Start
+                                    -if(container.status!=='exited')
+                                        a.orange(href=`/docker/stop?id=${container.Id}`)
+                                            img.srv_drop_StatusImage(src='static/images/power-button.svg')
+                                            | Shutdown
+                                    -if(container.status!=='removing')
+                                        a.red(href=`/docker/remove?id=${container.Id}`)
+                                            img.srv_drop_StatusImage(src='static/images/delete.svg')
+                                            | Delete
+                                    -if(container.status!=='restarting')
+                                        a.blue(href=`/docker/restart?id=${container.Id}`)
+                                            img.srv_drop_StatusImage(src='static/images/restart.svg')
+                                            | Restart
+
                     
 
             

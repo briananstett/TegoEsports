@@ -71,10 +71,12 @@ body {
     min-width:50px;
     color: #9E9E9E;
     padding: 0 10px;
+    margin:0;
 }
 .srv_optionHeader_items:first-child{
     padding-left: 0;
 }
+
 
 
 .srv_content_header {
@@ -141,17 +143,19 @@ body {
     text-align: left;
     color: #9E9E9E;
 }
-#srv_content_table tr{
+.srv_server_row{
     border-bottom: 1px solid #9E9E9E;
     height:45px;
 }
 td:last-child{
     text-align: center;
 }
+
 #srv_image_picture {
     width:30px;
     height:30px;
 }
+
 #srv_status_circle {
     width:12px;
     height:12px;
@@ -170,8 +174,120 @@ td:last-child{
 .spanred{
     color:red;
 }
+.orange{
+    background-color:orange;
+}
+.blue{
+    background-color:blueviolet;
+}
+
 #dots {
     width:30px;
     height:30px;
     display: inline;
+}
+
+.srv_dropdown_options {
+    overflow: hidden;
+    display: block;
+    height:300px;
+}
+.srv_dropdown_options td{
+    height:100%;
+    display: block;
+}
+.srv_dropdown_options td div{
+    width:100%;
+    height:100%;
+}
+
+.srv_table_header_flexRow {
+    display: flex;
+    height:45px;
+    width:100%;
+    align-items: flex-start;
+    font-size: 10pt;
+    border-bottom: 1px solid #9E9E9E;
+    align-items: center;
+    
+}
+
+.flex4 {
+    flex:4;
+}
+
+.flex2 {
+    flex:2;
+}
+
+.flex3 {
+    flex:3;
+}
+
+.flex1 {
+    flex:1;
+}
+.srv_option_row_flexRow {
+    display: flex;
+    height:45px;
+    width:100%;
+    align-items: flex-start;
+    font-size: 10pt;
+    border-bottom: 1px solid #9E9E9E;
+    align-items: center;
+}
+
+.srv_option_row_item {
+    display:inline-block;
+    color: #9E9E9E;
+    font-size: 12pt;
+    padding: 0 10px;
+    
+}
+.srv_option_row_item:first-child {
+    padding-left: 0;
+    
+}
+
+.flex6 {
+    flex:6
+}
+
+.srv_option_row_dropdown {
+    display: none;
+    width:100%;
+    height:100px;
+    
+}
+
+#srv_dropdown_status_row {
+    margin: 20px;
+    height: 40px;
+}
+#srv_dropdown_status_row h3{
+    display: inline;
+    margin:0;
+    padding-right:10px;
+    color:#9E9E9E;
+    font-size: 12pt;
+}
+#srv_dropdown_status_row a{
+    padding: 0 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    display: inline-block;
+    height:30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    color:white;
+    font-size: 11pt;
+}
+
+.srv_drop_StatusImage {
+    width:20px;
+    height:20px;
+    position: relative;
+    top:4px;
+    padding-right: 5px;
 }

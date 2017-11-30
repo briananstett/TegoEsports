@@ -62,7 +62,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                 }, function(error, response, body){
                     if (!error && response.statusCode == 204){
                         console.log("no errors, should redirct")
-                        return res.redirect('/docker');
+                        return res.redirect('/servers');
                     }
             });
             break;
@@ -72,7 +72,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                 uri: appVariables.startContainerURI(id)
                 }, function(error, response, body){
                     if (!error && response.statusCode == 204){
-                        return res.redirect('/docker');
+                        return res.redirect('/servers');
                     }else{
                         var parsedBody = JSON.parse(body);
                         var error = new Error("There was a problem while starting your container.\n" + parsedBody.message);
@@ -89,7 +89,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                         if(error){
                             next(error)
                         }else{
-                            return res.redirect('/docker');   
+                            return res.redirect('/servers');   
                         }
                     }) 
                 }else{
@@ -102,7 +102,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
             uri: appVariables.restartContainerURI(id)
             }, function(error, response, body){
                 if (!error && response.statusCode == 204){
-                    return res.redirect('/docker');
+                    return res.redirect('/servers');
                 }else{
                     var parsedBody = JSON.parse(body);
                     var error = new Error("There was a problem while starting your container.\n" + parsedBody.message);
@@ -143,7 +143,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                                 uri: appVariables.startContainerURI(parsedJson.Id)
                                 }, function(error, response, body){
                                     if (!error && response.statusCode == 204){
-                                        return res.redirect('/docker');
+                                        return res.redirect('/servers');
                                     }
                             });
                             
