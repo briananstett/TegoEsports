@@ -23,7 +23,7 @@ router.post('/login', function(req, res, next){
             return next(error);
         }else{
             req.session.userId = user._id;
-            return res.redirect('/docker');
+            return res.redirect('/servers');
         }
     });
 });
@@ -44,6 +44,10 @@ router.get('/servers-as-a-service', function(req, res, next){
 /*      Routes for docker      */
 router.get('/docker', middle.requireLogin, middle.getDockerImages, middle.getUserContainers, function(req, res, next){
     return res.render('docker');
+
+});
+router.get('/servers', middle.requireLogin, middle.getDockerImages, middle.getUserContainers, function(req, res, next){
+    return res.render('saas');
 
 });
 router.get('/docker/:action', middle.requireLogin, function(req, res, next){

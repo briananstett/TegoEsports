@@ -3,6 +3,7 @@ var appVariables = require('../AppVariables').appVariables;
 var userModel = require('../models/user').user;
 var containerModel = require('../models/user').container;
 var parseInspectJSON = require('../containers').parseInspectJSON;
+var imageToPicture = require('../containers').imageToPicture;
 function requireLogin(req, res, next){
     if(req.session.userId){
         console.log("You have been Authenticated");
@@ -69,7 +70,7 @@ function getUserContainers(req, res, next){
                         var parsedJson = JSON.parse(body);
                         userContainersDocker.push({
                             Id: parsedJson.Id,
-                            image: parsedJson.Config.Image,
+                            image: imageToPicture(parsedJson.Config.Image),
                             name: parsedJson.Name,
                             status : parsedJson.State.Status,
                             ports : parseInspectJSON(parsedJson.Config.Image,parsedJson.HostConfig.PortBindings)

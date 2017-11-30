@@ -1,0 +1,177 @@
+
+*{
+    font-family: 'Open Sans';
+}
+.srv_nav {
+    height:100%;
+    width:100px;
+    float: left;
+    background-color: #135FAC;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.srv_nav_items:first-child{
+    margin-top:30px;
+    display: block
+}
+#title{
+    margin: 40 0;
+    
+}
+#title h1{
+    display: inline;
+    font-size:18pt;
+}
+
+body {
+    margin:0;
+    
+    
+}
+
+.srv_nav_items {
+    width:70px;
+    height:70px;
+    margin:15 0px;
+    text-decoration: none;
+    color:white;
+    text-align: center;
+
+    
+    
+}
+
+#src_content_area {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#srv_content_title {
+    width:80%;
+}
+
+.srv_content_flexRow {
+    width:80%;
+    align-items: flex-start;
+    justify-content: center;
+    height:50px;
+}
+
+#srv_optionHeaders {
+    
+}
+
+.srv_optionHeader_items {
+    display: inline-block;
+    height:30px;
+    min-width:50px;
+    color: #9E9E9E;
+    padding: 0 10px;
+}
+.srv_optionHeader_items:first-child{
+    padding-left: 0;
+}
+
+
+.srv_content_header {
+    width:100%;
+    border-bottom: 1px solid  #BDBDBD;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    line-height: 40px
+    
+    
+}
+
+#srv_server_img {
+    width:40px;
+    margin: auto;
+    display: block;
+}
+
+#srv_TegoLogo {
+    width:70px;
+}
+
+#srv_container_images {
+    width:45px;
+}
+
+#srv_new {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #1d81d9;
+    display:inline-block;
+    float:right;
+    position: relative;
+    top: 20px;
+    box-shadow: 3px 3px 15px grey;
+    text-align: center;
+}
+#srv_new > a{
+    display: block;
+    width:100%;
+    height:100%;
+    margin:0;
+}
+
+#add {
+    width:30px;
+    height:30px;
+    position:relative;
+    top:10px
+    
+}
+
+.srv_content_table_container {
+    margin: 50px 0;
+    
+}
+
+#srv_content_table {
+    width:100%;
+    border-collapse: collapse;
+    text-align: left;
+    color: #9E9E9E;
+}
+#srv_content_table tr{
+    border-bottom: 1px solid #9E9E9E;
+    height:45px;
+}
+td:last-child{
+    text-align: center;
+}
+#srv_image_picture {
+    width:30px;
+    height:30px;
+}
+#srv_status_circle {
+    width:12px;
+    height:12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+.green{
+    background-color:green;
+}
+.spangreen{
+    color:green;
+}
+.red{
+    background-color: red;
+}
+.spanred{
+    color:red;
+}
+#dots {
+    width:30px;
+    height:30px;
+    display: inline;
+}

@@ -26,6 +26,16 @@ function createContainerJSON(image, exposedPort){
 
 
 }
+function imageToPicture(containerImage){
+    console.log("here");
+    switch(containerImage) {
+        //create JSON for minecraft
+        case "itzg/minecraft-server:latest":
+        case "itzg/minecraft-server":
+            console.log('got it');
+            return 'static/images/minecraft.png'
+    }    
+}
 function parseInspectJSON(image, inspectJSON){
     switch(image) {
         //create JSON for minecraft
@@ -37,3 +47,4 @@ function parseInspectJSON(image, inspectJSON){
 
 module.exports.create = createContainerJSON;
 module.exports.parseInspectJSON = parseInspectJSON;
+module.exports.imageToPicture = imageToPicture;

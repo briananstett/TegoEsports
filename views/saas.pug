@@ -1,0 +1,69 @@
+html
+    head
+        title TeGo eSports
+        link(rel='stylesheet', href='static/saas.css')
+        link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet')
+    body
+        nav.srv_nav
+            a.srv_nav_items(href='/')
+                img#srv_TegoLogo(src='static/images/TEGO_Logo.png')
+            a.srv_nav_items(href='/servers')
+                img#srv_server_img(src='static/images/servers.svg')
+                | Servers
+            a.srv_nav_items(href='#')
+                img#srv_container_images(src='static/images/srv_images.svg')
+                | Images
+            a.srv_nav_items(href='#')
+                img#srv_container_images(src='static/images/information.svg')
+                | Help
+            a.srv_nav_items(href='#')
+                img#srv_container_images(src='static/images/settings.svg')
+                | Settings
+        #src_content_area
+            #title.srv_content_flexRow
+                h1 Servers
+            #srv_optionHeaders.srv_content_header
+                .srv_content_flexRow
+                    a.srv_optionHeader_items Instances
+                    a.srv_optionHeader_items SnapShots
+                    a.srv_optionHeader_items FireWall
+                    a.srv_optionHeader_items DNS
+                    a.srv_optionHeader_items Storage
+                    #srv_new
+                        a(href='#')
+                            img#add(src='static/images/add.svg')
+            .srv_content_table_container.srv_content_flexRow
+                table#srv_content_table
+                    colgroup
+                        col(width='100')
+                        col(width='40')
+                        col(width='80')
+                        col(width='80')
+                        col(width='20')
+                    tr
+                        th Server
+                        th Image
+                        th IP Address
+                        th Status
+                        th
+                    if userContainersDocker
+                        for container in userContainersDocker
+                            tr
+                                td #{container.name}
+                                td
+                                    img#srv_image_picture(src=`${container.image}`)
+                                td #{whaleIP}:#{container.ports}
+                                -if(container.status=='running') 
+                                    td
+                                        #srv_status_circle.green
+                                        span.spangreen Running
+                                -if(container.status=='exited') 
+                                    td
+                                        #srv_status_circle.red
+                                        span.spanred Stopped
+                                td
+                                    span
+                                        img#dots(src='static/images/dots.svg')
+                    
+
+            
