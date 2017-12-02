@@ -28,17 +28,26 @@ router.post('/login', function(req, res, next){
     });
 });
 
+/*      Routes for Logout             */
+router.get('/logout', function(req, res, next){
+    if(req.session.userId){
+        req.session.destroy(function(error){
+            if(error){
+                next(error);
+            }else{
+                res.redirect("/");
+            }
+        })
+    }
+});
+
 /*      Routes for Team Members       */
 router.get('/team-members', function(req, res, next){
     return res.render('teamMembers', {title: 'Team-Members'});
 });
 
 router.get('/servers-as-a-service', function(req, res, next){
-    if(req.session.userId){
-        res.redirect('/docker');
-    }else{
         return res.render('servers', {title: 'Servers as a Service'});    
-    }
 })
 
 /*      Routes for docker      */
@@ -54,6 +63,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
     const action = req.params.action;
     const id = req.query.id;
     const imageID = req.query.imageID;
+    const containerName = req.query.containerName;
     switch(action) {
         case "stop":
             request.post(
@@ -117,7 +127,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                 };
                 request.post(
                     {
-                    uri: appVariables.createContainerURI,
+                    uri: appVariables.createContainerURI(containerName),
                     headers: {
                         "Content-Type": "application/json"
                      },

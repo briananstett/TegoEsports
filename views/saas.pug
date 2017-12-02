@@ -18,7 +18,7 @@ html
             a.srv_nav_items(href='#')
                 img#srv_container_images(src='static/images/srv_images.svg')
                 | Images
-            a.srv_nav_items(href='#')
+            a.srv_nav_items(href='/servers-as-a-service')
                 img#srv_container_images(src='static/images/information.svg')
                 | Help
             a.srv_nav_items(href='#')
@@ -35,8 +35,25 @@ html
                     a.srv_optionHeader_items DNS
                     a.srv_optionHeader_items Storage
                     #srv_new
-                        a(href='#')
-                            img#add(src='static/images/add.svg')
+                        a#srv_add_button(href='#')
+                            img#srv_add(src='static/images/add.svg')
+            #srv_create_new
+                #srv_create_new_content
+                    img#srv_create_next(src='static/images/next.svg')
+                    h3#srv_create_header Create a New Game Server
+                    p#srv_create_instructions
+                        | Before you can manage your server, you have to 
+                        b create it
+                        | . Select from the list of images and name your new server. If you don't want to name your server, we'll name it for you.
+                    form#srv_create_form(action='/docker/create', method='get')
+                        label(for='srv_select_image') Image
+                        select#srv_select_image(name='imageID')
+                            if dockerImages
+                                for image in dockerImages
+                                    option(value=`${image.imageTag}`) #{image.imageTag}
+                        label(for='srv_create_name') Server Name
+                        input#srv_create_name(type='text', placeholder='Default', name='containerName')
+                        button#srv_create_button(value='Submit', type='submit') Create
             .srv_content_table_container.srv_content_flexRow
                 .srv_table_header_flexRow
                     h3.srv_optionHeader_items.flex4(style='width:50px;') Server

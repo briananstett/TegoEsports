@@ -6,7 +6,6 @@ var parseInspectJSON = require('../containers').parseInspectJSON;
 var imageToPicture = require('../containers').imageToPicture;
 function requireLogin(req, res, next){
     if(req.session.userId){
-        console.log("You have been Authenticated");
         return next();
     }else{
         var error = new Error("You Must Be Logged In");

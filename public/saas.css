@@ -124,7 +124,7 @@ body {
     margin:0;
 }
 
-#add {
+#srv_add {
     width:30px;
     height:30px;
     position:relative;
@@ -256,7 +256,6 @@ td:last-child{
 .srv_option_row_dropdown {
     display: none;
     width:100%;
-    height:100px;
     
 }
 
@@ -273,7 +272,6 @@ td:last-child{
 }
 #srv_dropdown_status_row a{
     padding: 0 10px;
-    margin: 0 5px;
     text-decoration: none;
     display: inline-block;
     height:30px;
@@ -290,4 +288,81 @@ td:last-child{
     position: relative;
     top:4px;
     padding-right: 5px;
+}
+
+#srv_create_new {
+    display: none;
+    position: absolute;
+    top:100px;
+    right:0;
+    width:300px;
+    height:75%;
+    background-color: #135FAC;
+    border-radius: 10px;
+    
+}
+
+#srv_create_new_content {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    
+}
+
+#srv_create_next {
+    height:30px;
+    width:30px;
+    display: inline;
+    margin:20px;
+    
+}
+
+#srv_create_button {
+    display: block;
+    border-radius: 20px;
+    width:100px;
+    height: 45;
+    position: relative;
+    top: 210px;
+    margin: auto;
+    background-color: #1d81d9;
+    color:white;
+}
+
+#srv_create_instructions {
+    width: 240px;
+    display: block;
+    color:white;
+    align-self: center;
+    text-align: left;
+    font-size: 11pt;
+}
+
+#srv_create_header {
+    display: block;
+    margin: 0 20;
+    width: 230px;
+    color:white;
+    align-self: center;
+}
+#srv_create_form{
+    display: block;
+    width:260px;
+    height:400px;
+    align-self: center;
+}
+#srv_create_form select, #srv_create_form input{
+    display:block;
+    width:160px;
+    height:30px;
+    border-radius: 5px;
+    font-family: 'Open Sans';
+}
+#srv_create_form label{
+    display: block;
+    color:white;
+    font-size: 14pt;
+    margin: 10px 0;
 }

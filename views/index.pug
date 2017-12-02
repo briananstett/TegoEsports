@@ -29,7 +29,10 @@ block content
     #tegoButtonRow.flexRow(data-aos='fade-up')
       .serviceContainer
         .tegoButton
-          a#serverImage.tegoButtonImage(href='/servers-as-a-service')
+          if(currentUser)
+            a#serverImage.tegoButtonImage(href='/servers')
+          else
+            a#serverImage.tegoButtonImage(href='/servers-as-a-service')
         h3 Servers as a Service
         p
           | Looking to host an eSports server? TeGo has you covered! Using Docker we are able to offer free dedicated server hosting for a variety of different games. Follow the link and get gaming!

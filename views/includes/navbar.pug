@@ -20,6 +20,9 @@ nav#navBar.smallSlice
             img#tegoImg(src='static/images/TEGO_Logo.png')
           #navBarItemsContainer(data-aos='fade-left')
             a.navBarItems(href='#') Contact
-            a.navBarItems(href='#') Login
+            if currentUser
+              a.navBarItems(href='/logout') Logout
+            else
+              a.navBarItems(href='/') Log in
             a.navBarItems(href='#') Store
             a.navBarItems(href='/team-members') Team Members

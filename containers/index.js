@@ -4,7 +4,7 @@
 function createContainerJSON(image, exposedPort){
     var createJSON = {
         Image: image,
-    } 
+    };
     switch(image) {
         //create JSON for minecraft
         case "itzg/minecraft-server:latest":
