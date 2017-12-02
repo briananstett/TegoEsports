@@ -18,7 +18,7 @@ var appVariables={
     },
     createContainerURI : function(containerName){
         if(containerName){
-            return `http://35.190.142.192:2375/v1.32/containers/create?name=${containerName}`;
+            return `http://35.190.142.192:2375/v1.32/containers/create?name=${containerName.trim()}`;
         }else{
             return 'http://35.190.142.192:2375/v1.32/containers/create';
         }

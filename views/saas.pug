@@ -6,6 +6,11 @@ html
         link(rel='shortcut icon', href='static/images/TEGO_Logo_Purple.png')
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         script(type='text/javascript', src='static/saas.js')
+        script(language='javascript', type='text/javascript').
+            function removeSpaces(string) {
+            return string.split(' ').join('');
+            }
+
 
     
     body
@@ -52,7 +57,7 @@ html
                                 for image in dockerImages
                                     option(value=`${image.imageTag}`) #{image.imageTag}
                         label(for='srv_create_name') Server Name
-                        input#srv_create_name(type='text', placeholder='Default', name='containerName' onblur="this.value=removeSpaces(this.value);")
+                        input#srv_create_name(type='text', placeholder='Default', name='containerName' pattern="[a-zA-Z0-9\s]+")
                         button#srv_create_button(value='Submit', type='submit') Create
             .srv_content_table_container.srv_content_flexRow
                 .srv_table_header_flexRow

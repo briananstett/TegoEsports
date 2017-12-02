@@ -2,9 +2,9 @@ var user = require('../models/user').user;
 var bcrypt = require('bcrypt');
 
 var newAdd = {
-    email :"fredericks@gmail.com",
-    username: "fredericks",
-    alias: "Dr. Eric Frederick",
+    email :"baanstet@oakland.edu",
+    username: "shamshock",
+    alias: "Brian Anstett",
     password: "password",
 }
 

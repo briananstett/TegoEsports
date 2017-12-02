@@ -63,7 +63,7 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
     const action = req.params.action;
     const id = req.query.id;
     const imageID = req.query.imageID;
-    const containerName = req.query.containerName.trim();
+    const containerName = req.query.containerName;
     switch(action) {
         case "stop":
             request.post(
