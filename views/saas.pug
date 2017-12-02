@@ -52,7 +52,7 @@ html
                                 for image in dockerImages
                                     option(value=`${image.imageTag}`) #{image.imageTag}
                         label(for='srv_create_name') Server Name
-                        input#srv_create_name(type='text', placeholder='Default', name='containerName')
+                        input#srv_create_name(type='text', placeholder='Default', name='containerName' onblur="this.value=removeSpaces(this.value);")
                         button#srv_create_button(value='Submit', type='submit') Create
             .srv_content_table_container.srv_content_flexRow
                 .srv_table_header_flexRow
