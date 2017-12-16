@@ -8,6 +8,7 @@ var containerModel = require('../models/user').container;
 var createContainerJSON = require('../containers').create;
 var request = require('request');
 var appVariables = require('../AppVariables').appVariables;
+var fs = require('fs');
 /*      Routes for index        */
 router.get('/', function(req, res, next){
     return res.render('index');
@@ -69,6 +70,9 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
             request.post(
                 {
                 uri: appVariables.stopContainerURI(id),
+		cert:fs.readFileSync('/root/.docker/cert.pem'),
+		key: fs.readFileSync('/root/.docker/key.pem'),
+		ca: fs.readFileSync('/root/.docker/ca.pem')
                 }, function(error, response, body){
                     if (!error && response.statusCode == 204){
                         console.log("no errors, should redirct")
@@ -79,7 +83,10 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
         case "start":
             request.post(
                 {
-                uri: appVariables.startContainerURI(id)
+                uri: appVariables.startContainerURI(id),
+		cert:fs.readFileSync('/root/.docker/cert.pem'),
+                key: fs.readFileSync('/root/.docker/key.pem'),
+                ca: fs.readFileSync('/root/.docker/ca.pem')
                 }, function(error, response, body){
                     if (!error && response.statusCode == 204){
                         return res.redirect('/servers');
@@ -92,7 +99,10 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
             break;
         case "remove":
             request.delete({
-                uri:appVariables.removeContainerURI(id)
+                uri:appVariables.removeContainerURI(id),
+		cert:fs.readFileSync('/root/.docker/cert.pem'),
+                key: fs.readFileSync('/root/.docker/key.pem'),
+                ca: fs.readFileSync('/root/.docker/ca.pem')
             },function(error, response, body){
                 if(!error && response.statusCode == 204){
                     containerModel.deleteContainer(id, function(error){
@@ -109,7 +119,10 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
         case "restart":
         request.post(
             {
-            uri: appVariables.restartContainerURI(id)
+            uri: appVariables.restartContainerURI(id),
+		cert:fs.readFileSync('/root/.docker/cert.pem'),
+                key: fs.readFileSync('/root/.docker/key.pem'),
+                ca: fs.readFileSync('/root/.docker/ca.pem')
             }, function(error, response, body){
                 if (!error && response.statusCode == 204){
                     return res.redirect('/servers');
@@ -128,6 +141,9 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                 request.post(
                     {
                     uri: appVariables.createContainerURI(containerName),
+		    cert:fs.readFileSync('/root/.docker/cert.pem'),
+                    key: fs.readFileSync('/root/.docker/key.pem'),
+                    ca: fs.readFileSync('/root/.docker/ca.pem'),
                     headers: {
                         "Content-Type": "application/json"
                      },
@@ -150,7 +166,10 @@ router.get('/docker/:action', middle.requireLogin, function(req, res, next){
                             //start Container
                             request.post(
                                 {
-                                uri: appVariables.startContainerURI(parsedJson.Id)
+                                uri: appVariables.startContainerURI(parsedJson.Id),
+				cert:fs.readFileSync('/root/.docker/cert.pem'),
+                		key: fs.readFileSync('/root/.docker/key.pem'),
+                		ca: fs.readFileSync('/root/.docker/ca.pem')
                                 }, function(error, response, body){
                                     if (!error && response.statusCode == 204){
                                         return res.redirect('/servers');

@@ -15,6 +15,7 @@
     "connect-mongo": "^2.0.0",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
     "http": "0.0.0",
     "mongoose": "^4.13.0",
     "object-keys": "^1.0.11",

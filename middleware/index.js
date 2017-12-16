@@ -4,6 +4,7 @@ var userModel = require('../models/user').user;
 var containerModel = require('../models/user').container;
 var parseInspectJSON = require('../containers').parseInspectJSON;
 var imageToPicture = require('../containers').imageToPicture;
+var fs = require('fs');
 function requireLogin(req, res, next){
     if(req.session.userId){
         return next();
@@ -17,7 +18,10 @@ function requireLogin(req, res, next){
 function getDockerImages(req, res, next){
     var filteredImages =[];
     var options = {
-        url: appVariables.imageRequest
+        url: appVariables.imageRequest,
+	cert:fs.readFileSync('/root/.docker/cert.pem'),
+        key: fs.readFileSync('/root/.docker/key.pem'),
+        ca: fs.readFileSync('/root/.docker/ca.pem')
     };
     request(options, function(error, response,body){
         if (!error && response.statusCode == 200) {
@@ -62,7 +66,10 @@ function getUserContainers(req, res, next){
         //loop through all the users containers that were returned from the database
             userContainers.forEach(function(container){
                 var options = {
-                    url: appVariables.inspectContainerURI(container.ID)
+                    url: appVariables.inspectContainerURI(container.ID),
+		    cert:fs.readFileSync('/root/.docker/cert.pem'),
+                    key: fs.readFileSync('/root/.docker/key.pem'),
+                    ca: fs.readFileSync('/root/.docker/ca.pem')
                 }
                 request(options, function(error, response, body){
                     if (!error && response.statusCode == 200){
