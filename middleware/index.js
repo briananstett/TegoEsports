@@ -5,6 +5,7 @@ var containerModel = require('../models/user').container;
 var parseInspectJSON = require('../containers').parseInspectJSON;
 var imageToPicture = require('../containers').imageToPicture;
 var fs = require('fs');
+var path =require('path');
 function requireLogin(req, res, next){
     if(req.session.userId){
         return next();
@@ -19,10 +20,10 @@ function getDockerImages(req, res, next){
     var filteredImages =[];
     var options = {
         url: appVariables.imageRequest,
-	cert:fs.readFileSync('/root/.docker/cert.pem'),
-        key: fs.readFileSync('/root/.docker/key.pem'),
-        ca: fs.readFileSync('/root/.docker/ca.pem')
-    };
+    	cert:fs.readFileSync(path.join(__dirname,'../keys/cert.pem')),
+        key: fs.readFileSync(path.join(__dirname,'../keys/key.pem')),
+        ca: fs.readFileSync(path.join(__dirname,'../keys/ca.pem'))
+	};
     request(options, function(error, response,body){
         if (!error && response.statusCode == 200) {
             JSON.parse(body).forEach(function(image) {
@@ -67,10 +68,10 @@ function getUserContainers(req, res, next){
             userContainers.forEach(function(container){
                 var options = {
                     url: appVariables.inspectContainerURI(container.ID),
-		    cert:fs.readFileSync('/root/.docker/cert.pem'),
-                    key: fs.readFileSync('/root/.docker/key.pem'),
-                    ca: fs.readFileSync('/root/.docker/ca.pem')
-                }
+		    cert:fs.readFileSync(path.join(__dirname,'../keys/cert.pem')),
+        	    key: fs.readFileSync(path.join(__dirname,'../keys/key.pem')),
+            	    ca: fs.readFileSync(path.join(__dirname,'../keys/ca.pem'))
+		}
                 request(options, function(error, response, body){
                     if (!error && response.statusCode == 200){
                         var parsedJson = JSON.parse(body);
