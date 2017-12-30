@@ -50,7 +50,7 @@ html
                         | Before you can manage your server, you have to 
                         b create it
                         | . Select from the list of images and name your new server. If you don't want to name your server, we'll name it for you.
-                    form#srv_create_form(action='/docker/create', method='get')
+                    form#srv_create_form(action='/saas/create', method='get')
                         label(for='srv_select_image') Image
                         select#srv_select_image(name='imageID')
                             if dockerImages
@@ -88,19 +88,19 @@ html
                                 #srv_dropdown_status_row
                                     h3 Status:
                                     -if(container.status!=='running')
-                                        a.green(href=`/docker/start?id=${container.Id}`)
+                                        a.green(href=`/saas/start?id=${container.Id}`)
                                             img.srv_drop_StatusImage(src='static/images/play.svg')
                                             | Start
                                     -if(container.status!=='exited')
-                                        a.orange(href=`/docker/stop?id=${container.Id}`)
+                                        a.orange(href=`/saas/stop?id=${container.Id}`)
                                             img.srv_drop_StatusImage(src='static/images/power-button.svg')
                                             | Shutdown
                                     -if(container.status!=='removing')
-                                        a.red(href=`/docker/remove?id=${container.Id}`)
+                                        a.red(href=`/saas/remove?id=${container.Id}`)
                                             img.srv_drop_StatusImage(src='static/images/delete.svg')
                                             | Delete
                                     -if(container.status!=='restarting')
-                                        a.blue(href=`/docker/restart?id=${container.Id}`)
+                                        a.blue(href=`/saas/restart?id=${container.Id}`)
                                             img.srv_drop_StatusImage(src='static/images/restart.svg')
                                             | Restart
 

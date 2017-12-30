@@ -36,14 +36,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // serve static files from /public
-//app.use('/static', express.static(__dirname + '/public'));
 
 // view engine setup
 app.set('view engine', 'pug');
 
 // include routes
-var routes = require('./routes/index');
-app.use('/', routes);
+app.use(require('./routes'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
