@@ -497,7 +497,7 @@ body {
 
 #loginDiv {
     width:270px;
-    height: 290;
+    height: 300;
     background-color: #FFFFFF;
     border-radius: 10px;
     display:flex;
@@ -506,9 +506,10 @@ body {
     flex-direction: column;
     box-shadow: 10px 10px 25px black;
 }
-#loginDiv form, #loginDiv p{
+#loginDiv form, #loginDiv p, #login_discord_container{
     width:80%;
     margin:0;
+    
 }
 #loginDiv p, #loginDiv a{
     font-family:'TitilliumWeb-SemiBold';
@@ -519,7 +520,7 @@ body {
 }
 #loginDiv #notAMember{
     position:relative;
-    top:-12px;
+    top:-5px;
 }
 #loginDiv strong{
     font-family:'TitilliumWeb-Bold';
@@ -608,4 +609,33 @@ body {
     font-size: 11pt;
     font-size: 11pt;
     font-family: "TitilliumWeb-Bold"
+}
+/*asdfasdf*/
+#login_discord_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#discord_new {
+    display: inline;
+    font-family:'TitilliumWeb-SemiBold';
+    color:white;
+    background: red;
+    padding: 1px 5px;
+    border-radius: 5px;
+    line-height: 20px;
+    height:20px;
+}
+
+#discord_login_button {
+    display:block;
+    width:40px;
+    height:40px;
+    margin:0;
+    padding: 0;
+    color:black;
+}
+#discord_login_button img{
+    
+    
 }

@@ -20,8 +20,8 @@ app.use(session({
   store : new MongoStore({
     mongooseConnection: database
   })
+}));
 
-}))
 app.use(compression());
 
 app.use('/static', express.static(__dirname + '/public'));

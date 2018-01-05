@@ -68,6 +68,13 @@ $(window).on('load', function() {
                             <input type="password" name="password" id="password">
                             <input type="submit" value="LOGIN">
                         </form>
+                        <div id="login_discord_container">
+                            <span id=discord_new>New</span>                  
+                            <a id="discord_login_button" title="Login with Discord " href='https://discordapp.com/api/oauth2/authorize?response_type=code&client_id=398568007108132882&scope=identify%20guilds&state=15773059ghq9183habn&redirect_uri=http://localhost:3000/discord/callback'>
+                                <img src="static/images/Discord-Logo-Color.svg" style="width:40px;height:40px;">
+                                
+                            </a>
+                        </div>
                         <p id="notAMember">Not a memeber? <a style="text-decoration:underline;" href="#">create an account</a></p>
                         
                     </div>

@@ -1,3 +1,4 @@
+var crypto=require('crypto');
 // Require Models
 var userModel = require('../models/user');
 // Controller Functions
