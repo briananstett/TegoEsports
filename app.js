@@ -3,6 +3,7 @@ var compression = require('compression');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
+var cookie = require('cookie-parser');
 var MongoStore = require('connect-mongo')(session);
 var app = express();
 
@@ -21,6 +22,8 @@ app.use(session({
     mongooseConnection: database
   })
 }));
+
+app.use(cookie());
 
 app.use(compression());
 
