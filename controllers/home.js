@@ -5,6 +5,7 @@ var userModel = require('../models/user');
 
 /* Render HomePage */
 module.exports.index= function(req, res, next){
+    console.log(req.session);
     return res.render('index');
 }
 
