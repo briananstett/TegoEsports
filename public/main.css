@@ -584,6 +584,11 @@ body {
     padding: 0;
     color:black;
 }
+#google_login_button {
+    display: block;
+    width:32px;
+    height:32;
+}
 #headerParagraph{
     width:550px;
 }

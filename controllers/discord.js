@@ -31,6 +31,10 @@ module.exports.callback_get = function(req, response, next){
             }
             var json = JSON.parse(res.body);
             req.session.userId= json.access_token;
+            req.session.oauth = {
+              'provider': 'discord',
+              'expires_in': json.expires_in
+          }
             discord.getUser(json.access_token, function(error, response){
               if(error){
                 console.log(error);

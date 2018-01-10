@@ -610,7 +610,6 @@ body {
     font-size: 11pt;
     font-family: "TitilliumWeb-Bold"
 }
-/*asdfasdf*/
 #login_discord_container{
     display: flex;
     flex-direction: row;
@@ -635,7 +634,9 @@ body {
     padding: 0;
     color:black;
 }
-#discord_login_button img{
-    
-    
+
+#google_login_button {
+    display: block;
+    width:32px;
+    height:32;
 }
