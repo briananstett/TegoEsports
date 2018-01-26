@@ -1,6 +1,6 @@
 # TegoEsports.com (Closed Beta)
 
-TeGo Esports is up and coming eSports organization, merging our passion for gaming and technology. Our site offers many features including fast bi-directional communication with socket.io, Discord integration using the Discord API, and a private video game hosting platform with Docker. Not to mention streaming tools, sounds and stat bots, and the Official TeGo discord bot that helps you choice the best game to play and organize gaming events  
+TeGo Esports is an up and coming eSports organization, merging our passion for gaming and technology. Our site offers many features including fast bi-directional communication with socket.io, Discord integration using the Discord API, and a private video game hosting platform with Docker. Not to mention streaming tools, sound and stat bots, and the Official TeGo discord bot that helps you choice the best game to play and organize gaming events  
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ We are currently in a closed beta and tegoesports.com takes you to our landing p
 
 ### Prerequisites
 
-tegoesports.com is built on the mean stacka and requires node.js 6+. 
+tegoesports.com is built on the mean stack and requires node.js 6+. 
 
 ### Installing
 
