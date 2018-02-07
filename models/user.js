@@ -30,13 +30,15 @@ var UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: false
     },
     updated: {
         type: Date,
         default: Date.now
     },
-    containers: [{type:Schema.Types.ObjectId, ref: 'container'}]
+    containers: [{type:Schema.Types.ObjectId, ref: 'container'}],
+    discord_id:String,
+    avatar:String
 });
 
 //Check passwords
@@ -63,6 +65,18 @@ UserSchema.statics.authenticate = function(username, password, cb){
         }
     });
 }
+UserSchema.statics.new_discord_user = function(new_discord_user, done){
+    this.create(new_discord_user, (error, user)=>{
+        return done(error, user);
+    })
+}
+
+UserSchema.statics.discord_authorize = function(discord_id, done){
+    this.findOne({id:discord_id}, function(error, user){
+        done(error, user);    
+    })
+}
+
 var user = mongoose.model('user', UserSchema);
 module.exports = user;
 

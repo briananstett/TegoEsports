@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var discord = require('./discord/discordUtils');
 var client_id = '398568007108132882';
 var client_secret= 'wflxepql2UM01L-GPGuhO9eVdeIqsgcg';
+
+var userModel = require('../models/user');
 module.exports.callback_get = function(req, response, next){
     //Varrify state issued is the state recieved
     // console.log(req.session.state);
@@ -23,7 +25,7 @@ module.exports.callback_get = function(req, response, next){
         form: {
           'grant_type': 'authorization_code',
           'code': code,
-          'redirect_uri': 'http://dev.tegoesports.com/discord/callback'
+          'redirect_uri': 'http://localhost:3000/discord/callback'
         }
       }, function(error, res) {
             if(error){
@@ -35,15 +37,22 @@ module.exports.callback_get = function(req, response, next){
               'provider': 'discord',
               'expires_in': json.expires_in
           }
-            discord.getUser(json.access_token, function(error, response){
+            discord.getUser(json.access_token, function(error, discord_user){
               if(error){
                 console.log(error);
               }
-              if(response){
-                console.log(response);
+              if(discord_user){
+                userModel.discord_authorize(discord_user.id, (error, user)=>{
+                  if(error){
+                    return next(error);
+                  }else{
+                    req.session.userId = user.id;
+                    return response.redirect('/');
+                  }
+                })
               }
             })
-            response.redirect('/');
+            // response.redirect('/');
       }); 
     }else{
       response.redirect('/');
@@ -51,5 +60,5 @@ module.exports.callback_get = function(req, response, next){
 }
 module.exports.authroize = function(req, res, next){
   var state = (crypto.createHash('md5').update(req.cookies['connect.sid']).digest("hex"));
-  return res.redirect(`https://discordapp.com/api/oauth2/authorize?response_type=code&client_id=398568007108132882&scope=identify%20guilds&state=${state}&redirect_uri=http://dev.tegoesports.com/discord/callback`);
+  return res.redirect(`https://discordapp.com/api/oauth2/authorize?response_type=code&client_id=398568007108132882&scope=identify%20guilds&state=${state}&redirect_uri=http://localhost:3000/discord/callback`);
 }
