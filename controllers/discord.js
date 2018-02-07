@@ -23,7 +23,7 @@ module.exports.callback_get = function(req, response, next){
         form: {
           'grant_type': 'authorization_code',
           'code': code,
-          'redirect_uri': 'http://localhost:3000/discord/callback'
+          'redirect_uri': 'http://tegoesports.com/discord/callback'
         }
       }, function(error, res) {
             if(error){
