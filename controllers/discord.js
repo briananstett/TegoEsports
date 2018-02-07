@@ -23,7 +23,7 @@ module.exports.callback_get = function(req, response, next){
         form: {
           'grant_type': 'authorization_code',
           'code': code,
-          'redirect_uri': 'http://localhost:3000/discord/callback'
+          'redirect_uri': 'http://dev.tegoesports.com/discord/callback'
         }
       }, function(error, res) {
             if(error){
@@ -51,5 +51,5 @@ module.exports.callback_get = function(req, response, next){
 }
 module.exports.authroize = function(req, res, next){
   var state = (crypto.createHash('md5').update(req.cookies['connect.sid']).digest("hex"));
-  return res.redirect(`https://discordapp.com/api/oauth2/authorize?response_type=code&client_id=398568007108132882&scope=identify%20guilds&state=${state}&redirect_uri=http://localhost:3000/discord/callback`);
+  return res.redirect(`https://discordapp.com/api/oauth2/authorize?response_type=code&client_id=398568007108132882&scope=identify%20guilds&state=${state}&redirect_uri=http://dev.tegoesports.com/discord/callback`);
 }
