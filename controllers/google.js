@@ -9,7 +9,7 @@ var client_secret = '76Ayzfhy0LmjkHbPJ9Dr4xEi';
 module.exports.authorize_get= function(req, res, next){
     console.log('redirect to auth');
     var state = (crypto.createHash('md5').update(req.cookies['connect.sid']).digest("hex"));
-    return res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?client_id=215712698920-u9s91jupvpol0pqt68mjk2n5q7slguqa.apps.googleusercontent.com&redirect_uri=http://localhost:3000/google/callback&scope=https://www.googleapis.com/auth/admin.directory.customer.readonly&response_type=code&state=${state}`);
+    return res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?client_id=215712698920-u9s91jupvpol0pqt68mjk2n5q7slguqa.apps.googleusercontent.com&redirect_uri=http://tegoesports.com/google/callback&scope=https://www.googleapis.com/auth/admin.directory.customer.readonly&response_type=code&state=${state}`);
 }
 
 module.exports.callback_get= function(req, response, next){
@@ -25,7 +25,7 @@ module.exports.callback_get= function(req, response, next){
                 'client_secret': client_secret,
                 'grant_type': 'authorization_code',
                 'code': code,
-                'redirect_uri': 'http://localhost:3000/google/callback'
+                'redirect_uri': 'http://tegoesports.com/google/callback'
             }
           }, function(error, res) {
                 if(error){
