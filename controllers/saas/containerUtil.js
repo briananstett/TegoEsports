@@ -46,42 +46,42 @@ module.exports.parseInspectJSON = function (image, inspectJSON){
 }
 
 /* REST URL for requesting all images */
-module.exports.imageRequest = 'https://35.196.106.24:51423/v1.32/images/json';
+module.exports.imageRequest = 'https://35.231.63.38:51423/v1.32/images/json';
 
 /* IP address of Docker server*/
 module.exports.whaleIP = "servers.tegoesports.com";
 
 /* returns REST URL for stopping a container */
 module.exports.stopContainerURI = function(id){
-    return `https://35.196.106.24:51423/v1.32/containers/${id}/stop`;
+    return `https://35.231.63.38:51423/v1.32/containers/${id}/stop`;
 }
 
 /* returns REST URL for starting a container */
 module.exports.startContainerURI = function(id){
-    return `https://35.196.106.24:51423/v1.32/containers/${id}/start`;
+    return `https://35.231.63.38:51423/v1.32/containers/${id}/start`;
 };
 
 /* returns REST URL for restarting a container */
 module.exports.restartContainerURI = function(id){
-    return `https://35.196.106.24:51423/v1.32/containers/${id}/restart?t=3`;
+    return `https://35.231.63.38:51423/v1.32/containers/${id}/restart?t=3`;
 };
 
 /* returns REST URL for removing a container */
 module.exports.removeContainerURI = function(id){
-    return `https://35.196.106.24:51423/v1.32/containers/${id}?v=true&force=true`;
+    return `https://35.231.63.38:51423/v1.32/containers/${id}?v=true&force=true`;
 };
 
 /* returns REST URL for inspecting a single container */
 module.exports.inspectContainerURI = function (id){
-    return `https://35.196.106.24:51423/v1.32/containers/${id}/json`
+    return `https://35.231.63.38:51423/v1.32/containers/${id}/json`
 };
 
 /* returns REST URL for creating a single container */
 module.exports.createContainerURI = function(containerName){
     if(containerName){
-        return `https://35.196.106.24:51423/v1.32/containers/create?name=${containerName.trim()}`;
+        return `https://35.231.63.38:51423/v1.32/containers/create?name=${containerName.trim()}`;
     }else{
-        return 'https://35.196.106.24:51423/v1.32/containers/create';
+        return 'https://35.231.63.38:51423/v1.32/containers/create';
     }
 
 };
